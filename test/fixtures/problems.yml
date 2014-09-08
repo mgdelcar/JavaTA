@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  discription: MyString
+  detectPlagiarism: 
+  language: MyString
+
+two:
+  title: MyString
+  discription: MyString
+  detectPlagiarism: 
+  language: MyString
