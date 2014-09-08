@@ -3,7 +3,7 @@ class CreateProblems < ActiveRecord::Migration
     create_table :problems do |t|
       t.string :title
       t.string :discription
-      t.bool :detectPlagiarism
+      t.boolean :detect_plagiarism
       t.string :language
 
       t.timestamps
