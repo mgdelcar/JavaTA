@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  input: MyString
+  output: MyString
+  points: 
+  max_time_execution_sec: 
+  problem_id: 
+
+two:
+  input: MyString
+  output: MyString
+  points: 
+  max_time_execution_sec: 
+  problem_id: 
