@@ -2,12 +2,12 @@
 
 one:
   title: MyString
-  discription: MyString
-  detectPlagiarism: 
+  description: MyString
+  detect_plagiarism: 
   language: MyString
 
 two:
   title: MyString
-  discription: MyString
-  detectPlagiarism: 
+  description: MyString
+  detect_plagiarism: 
   language: MyString

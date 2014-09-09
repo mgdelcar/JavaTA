@@ -69,6 +69,6 @@ class ProblemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def problem_params
-      params.require(:problem).permit(:title, :discription, :detectPlagiarism, :language)
+      params.require(:problem).permit(:title, :description, :detect_plagiarism, :language)
     end
 end

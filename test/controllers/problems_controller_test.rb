@@ -18,7 +18,7 @@ class ProblemsControllerTest < ActionController::TestCase
 
   test "should create problem" do
     assert_difference('Problem.count') do
-      post :create, problem: { detectPlagiarism: @problem.detectPlagiarism, discription: @problem.discription, language: @problem.language, title: @problem.title }
+      post :create, problem: { detect_plagiarism: @problem.detect_plagiarism, description: @problem.description, language: @problem.language, title: @problem.title }
     end
 
     assert_redirected_to problem_path(assigns(:problem))
@@ -35,7 +35,7 @@ class ProblemsControllerTest < ActionController::TestCase
   end
 
   test "should update problem" do
-    patch :update, id: @problem, problem: { detectPlagiarism: @problem.detectPlagiarism, discription: @problem.discription, language: @problem.language, title: @problem.title }
+    patch :update, id: @problem, problem: { detect_plagiarism: @problem.detect_plagiarism, description: @problem.description, language: @problem.language, title: @problem.title }
     assert_redirected_to problem_path(assigns(:problem))
   end
 

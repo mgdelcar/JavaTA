@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 20140908040637) do
 
   create_table "problems", force: true do |t|
     t.string   "title"
-    t.string   "discription"
+    t.string   "description"
     t.boolean  "detect_plagiarism"
     t.string   "language"
     t.datetime "created_at"
