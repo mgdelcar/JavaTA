@@ -1,2 +1,22 @@
-<h1>Practiceit#index</h1>
-<p>Find me in app/views/practiceit/index.html.erb</p>
+<div class='java_ta_container'>
+
+  <h1>Student Grades of Practice It!</h1>
+  <h2>Bishop Blanchet - Computer Science AP - 2014</h2>
+
+  <div class='java_ta_messages'>
+
+    <% @error_messages.each do |message| %>
+      <div class='java_ta_error'>
+        <p>Error: <%= message %></p>
+      </div>
+    <% end %>
+
+    <% @log_messages.each do |message| %>
+      <div class='java_ta_message'>
+        <p><%= message %></p>
+      </div>
+    <% end %>
+
+  </div>
+
+</div>

@@ -6,6 +6,12 @@ group :development, :test, :production do
   gem 'thin'
 end
 
+gem 'nokogiri'
+
+gem 'google_drive'
+
+gem 'mechanize'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.0'
 # Use SCSS for stylesheets
