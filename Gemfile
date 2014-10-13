@@ -12,7 +12,7 @@ gem 'google_drive'
 
 gem 'mechanize'
 
-gme 'date'
+gem 'date'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.0'
