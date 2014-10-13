@@ -1,4 +1,3 @@
-require 'Date'
 require 'rubygems'
 require 'google_drive'
 
