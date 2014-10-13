@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'practiceit/index'
+
   resources :test_cases
 
   resources :problems
