@@ -5,7 +5,8 @@ class PracticeitController < ApplicationController
     @error_messages = Array.new
 
     begin
-      grades_spreadsheet = GradesSpreadsheet.new(ENV['BB_EMAIL'], ENV['BB_CRED'], ENV['BB_DOC_ID'])
+      raise "You need to provide the doc_id of the google spreadsheet" if params[:doc_id].nil?
+      grades_spreadsheet = GradesSpreadsheet.new(ENV['BB_EMAIL'], ENV['BB_CRED'], params[:doc_id])
 
       students = grades_spreadsheet.students_list
 
