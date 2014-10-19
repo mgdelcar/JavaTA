@@ -13,6 +13,3 @@
  *= require_tree .
  *= require_self
  */
-.java_ta_error {
-  color:red;
-}
