@@ -12,6 +12,8 @@ gem 'google_drive'
 
 gem 'mechanize'
 
+gem 'rails_12factor', group: :production
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.0'
 # Use SCSS for stylesheets
