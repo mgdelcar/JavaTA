@@ -59,14 +59,30 @@ class CrawlerTest < ActiveSupport::TestCase
         12:19:58
       </td>
     </tr>
+    <tr style="white-space: nowrap;">
+      <td>
+        4
+      </td>
+      <td>
+        BJP3 Chapter 4
+      </td>
+      <td>
+        BJP3 Self-Check 4.02: logicExpressions1
+      </td>
+      <td>
+        2014-10-30
+        20:54:30
+      </td>
+    </tr>
   </tbody>
   <tfoot/>
 </table>'
 
     result = Crawler.extract_grades(html_table)
 
-    assert_equal(3, result.count)
+    assert_equal(4, result.count)
     assert(!result['BJP3 Self-Check 1.1'].nil?, "'BJP3 Self-Check 1.1' should be a key")
+    assert(!result['BJP3 Self-Check 4.2'].nil?, "'BJP3 Self-Check 4.2' should be a key")
   end
 
   def test_parse_grades
