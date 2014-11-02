@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html xmlns:fb="http://ogp.me/ns/fb#">
+<!-- This file and all linked documents are, unless otherwise specified, authored by Marty Stepp, and may not be copied, redistributed, or modified without his permission. -->
+	<head>
+		<meta charset="utf-8" />
+		<meta name="description" content="Practice-It is an online Java practice problem tool to help students in college and high school intro Java courses learn and practice basic CS1 and CS2 programming concepts.  The tool accompanies Building Java Programs, a textbook designed for use in a first course in computer science." />
+		<meta name="keywords" content="java, practice, practice-it, programming, building java programs, CS1, CS2, back to basics, procedural programming, objects late, stuart reges, marty stepp, addison wesley, pearson, DrawingPanel, college, university" />
+		<meta name="HandheldFriendly" content="true" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<meta property="og:image" content="http://practiceit.cs.washington.edu/images/ogimage.jpg" />
+		<meta property="fb:app_id" content="539343632745486" />
+		<meta http-equiv="Cache-Control" content="no-cache" />
+		<meta http-equiv="Pragma" content="no-cache" />
+		<meta http-equiv="Expires" content="0" />
+		<title>Practice-It! - My Problems Solved</title>
+		<link href="practiceit.css" type="text/css" rel="stylesheet" />
+		<link href="practiceit-mobile.css" type="text/css" rel="stylesheet" media="handheld, only screen" />
+		<link href="images/favicon.gif" type="image/gif" rel="shortcut icon" />
+		<!-- can use Prototype/Scriptaculous hosted on Google or locally -->
+		<script src="//ajax.googleapis.com/ajax/libs/prototype/1.7.1.0/prototype.js" type="text/javascript"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/scriptaculous/1.9.0/scriptaculous.js" type="text/javascript"></script>
+		<!--
+		<script src="scriptaculous/prototype.js" type="text/javascript"></script>
+		<script src="scriptaculous/scriptaculous.js" type="text/javascript"></script>
+		-->
+			<script src="advertisement.js" type="text/javascript"></script>
+		<script src="common.js" type="text/javascript"></script>
+	</head>
+	<body>
+		<noscript>
+			<p class="error">
+				Practice-It! requires JavaScript.  It looks like you have disabled JavaScript in your browser or are using a browser that does not support JavaScript.  Please enable it or try another browser.
+			</p>
+		</noscript>
+		<div id="adblockoverlay" style="display: none;">
+			<h2>AdBlock Detected</h2>
+			<p>
+				You must disable your AdBlock software in your browser to use this site.
+				Disable ad blocking for <strong>practiceit.cs.washington.edu</strong>, then refresh this page to continue.
+			</p>
+			<p>
+				It is easy to disable AdBlock for just one site while leaving it enabled for other sites.
+				Just click the "<strong>stop sign</strong>" icon in the top-right of your browser, then un-check the "<strong>Enabled for this site</strong>" checkbox.
+			</p>
+			<p>
+				<img src="images/adblock-disable.png" alt="AdBlock disable screenshot" />
+			</p>
+			<p>
+				Thank you for your understanding and helping us to keep Practice-It free of cost for all students to use.
+			</p>
+			<p style="margin-top: 3em">
+				<em>If you are still seeing this message after disabling your ad blocker, try clearing your browser history and refreshing the page.
+				Also make sure you don't have any other ad-blocking software running outside of your browser, such as a HOSTS file or proxy.</em>
+			</p>
+			<p style="margin-top: 2em">
+				If you are certain that you are not running AdBlock or any other ad-blocking software, but you are still seeing this message,
+				please <a href="contactus.jsp">Contact Us</a>.
+			</p>
+		</div>
+		<!-- required by Facebook API -->
+		<div id="fb-root"></div>
+		<div id="loading" style="display: none">
+			<img src="images/loading.gif" width="10" height="10" alt="Loading" />
+			Loading...
+		</div>
+		<!--
+		<h1>
+			<em>Building Java Programs</em> : <a href="./" title="Go back to main page">Practice-It!</a>
+		</h1>
+		-->
+		<h1 class="overalllayoutaligntext">
+			<!-- <em>Practice-It!</em>-->
+			<a href="index.jsp"><img src="images/practice-it-cartoony-logo-h60.png" alt="Practice-It! logo" /></a>
+		</h1>
+	<div id="mainbodyarea" class="overalllayoutalignblock">
+<div id="userinfoarea">
+	<div id="userimagearea">
+		<img src="images/user.gif" alt="user" title="" />
+		username  
+			(<span id="usertotalsolved">11</span>)
+	</div>
+	<div id="loginsolvedstatus" style="display: none">11</div>
+		<div id="useractionsarea">
+			<div id="useractionsbesideslogout">
+				<div style="margin-bottom: 0.5em">
+					<a class="" href="list.jsp" title="The complete list of practice problems to solve">
+						<img class="icon" src="images/run.gif" alt="icon" />
+						<strong>Practice!</strong></a>
+				</div>
+				<div>
+					<a id="edituserinfolink" class="" href="user.jsp" title="Basic personal information in your account">
+						<img class="icon" src="images/my-account-icon.png" alt="icon" />
+						My Account</a>
+				</div>
+				<!-- commented out because Practice-It instructor features are now disabled
+				<div>
+					<a class="" href="courses.jsp" title="A list of all of the courses you are taking">
+						<img class="icon" src="images/my-courses-icon.png" alt="icon" />
+						My Courses</a>
+				</div>
+				-->
+				<div>
+					<a class="" href="problemssolved.jsp" title="Lists all of the problems you have solved">
+						<img class="icon" src="images/my-problems-icon.png" alt="icon" />
+						My Problems</a>
+				</div>
+			</div>
+			<div id="logoutarea">
+				<a id="logoutlink" class="" href="logout.jsp" style="margin-top: 1em" title="Log out your account from Practice-It">
+					<img class="icon" src="images/logout-icon.png" alt="icon" />
+					Log Out</a>
+			</div>
+		</div>
+</div>
+<!--
+<div class="announcement">
+	<p>
+		Some users have reported that they did not receive credit for a problem they solved correctly.
+		If you don't see a problem here that you definitely did solve, please email Marty Stepp your user name and the problem name/number.
+		Thank you!
+	</p>
+</div>
+-->
+<div id="centralarea">
+	<h2 class="breadcrumbs overalllayoutaligntext">
+		<a href="index.jsp">Main Page</a>
+		&rarr;
+		<span class="currentpagecrumb">My Problems Solved</span>
+	</h2>
+			<div class="userinfosubsection">
+				<table class="calltable highlightrowonhover sorttable zebrastripe overalllayoutalignblock">
+					<tr>
+						<th>#</th>
+						<th>Category</th>
+						<th>Problem</th>
+						<th>Date/Time</th>
+					</tr>
+						<tr style="white-space: nowrap;">
+							<td>
+								1
+							</td>
+							<td>
+								BJP3 Chapter 1
+							</td>
+							<td>
+								BJP3 Self-Check 1.01: binaryNumbers
+							</td>
+							<td>
+								2014-09-06
+								11:56:09
+							</td>
+						</li>
+						<tr style="white-space: nowrap;">
+							<td>
+								2
+							</td>
+							<td>
+								BJP3 Chapter 1
+							</td>
+							<td>
+								BJP3 Self-Check 1.10: Shaq
+							</td>
+							<td>
+								2014-09-06
+								12:14:05
+							</td>
+						</li>
+						<tr style="white-space: nowrap;">
+							<td>
+								3
+							</td>
+							<td>
+								BJP3 Chapter 1
+							</td>
+							<td>
+								BJP3 Self-Check 1.11: downwardSpiral
+							</td>
+							<td>
+								2014-09-06
+								12:19:58
+							</td>
+						</li>
+						<tr style="white-space: nowrap;">
+							<td>
+								4
+							</td>
+							<td>
+								BJP3 Chapter 1
+							</td>
+							<td>
+								BJP3 Self-Check 1.02: binary1
+							</td>
+							<td>
+								2014-09-06
+								11:58:38
+							</td>
+						</li>
+						<tr style="white-space: nowrap;">
+							<td>
+								5
+							</td>
+							<td>
+								BJP3 Chapter 1
+							</td>
+							<td>
+								BJP3 Self-Check 1.03: binary2
+							</td>
+							<td>
+								2014-09-06
+								11:59:32
+							</td>
+						</li>
+						<tr style="white-space: nowrap;">
+							<td>
+								6
+							</td>
+							<td>
+								BJP3 Chapter 1
+							</td>
+							<td>
+								BJP3 Self-Check 1.04: cookieRecipe
+							</td>
+							<td>
+								2014-09-06
+								12:05:43
+							</td>
+						</li>
+						<tr style="white-space: nowrap;">
+							<td>
+								7
+							</td>
+							<td>
+								BJP3 Chapter 1
+							</td>
+							<td>
+								BJP3 Self-Check 1.05: javaVsClass
+							</td>
+							<td>
+								2014-09-06
+								12:06:24
+							</td>
+						</li>
+						<tr style="white-space: nowrap;">
+							<td>
+								8
+							</td>
+							<td>
+								BJP3 Chapter 1
+							</td>
+							<td>
+								BJP3 Self-Check 1.06: legalIdentifiers
+							</td>
+							<td>
+								2014-09-07
+								12:13:01
+							</td>
+						</li>
+						<tr style="white-space: nowrap;">
+							<td>
+								9
+							</td>
+							<td>
+								BJP3 Chapter 1
+							</td>
+							<td>
+								BJP3 Self-Check 1.07: outputSyntax
+							</td>
+							<td>
+								2014-09-06
+								12:08:47
+							</td>
+						</li>
+						<tr style="white-space: nowrap;">
+							<td>
+								10
+							</td>
+							<td>
+								BJP3 Chapter 1
+							</td>
+							<td>
+								BJP3 Self-Check 1.08: confounding
+							</td>
+							<td>
+								2014-09-06
+								12:10:30
+							</td>
+						</li>
+						<tr style="white-space: nowrap;">
+							<td>
+								11
+							</td>
+							<td>
+								BJP3 Chapter 1
+							</td>
+							<td>
+								BJP3 Self-Check 1.09: Archie
+							</td>
+							<td>
+								2014-09-06
+								12:12:53
+							</td>
+						</li>
+				</table>
+				<p style="text-align: center;">
+					<span class="forminputtip">(Click a column header to sort by that column.)</span>
+				</p>
+			</div>
+	<!-- commented out because Practice-It instructor features are now disabled
+	<div class="helptips">
+		<p>
+			If you are taking a course that assigns Practice-It problems for credit,
+			make sure to go to the <strong>My Courses</strong> page and add the courses you are taking,
+			so that your instructor or TA can see your work and give you credit.
+		</p>
+		<p>
+			Also make sure that you have your <strong>School field</strong> set properly, or else your
+			instructor might not be able to see you in their results page.
+			Be careful because some schools are in the list multiple times with similar
+			names, such as "U of Washington" and "University of Washington".
+			Make sure to choose exactly the school name that your instructor tells you to choose,
+			or they will not be able to see your progress.
+		</p>
+	</div>
+	-->
+</div>
+<script src="sorttable.js" type="text/javascript"></script>
+<div class="hrule"></div>
+<!-- An edit that Whitaker should be able to see! -->
+<div>
+	<p style="text-align: left; margin-top: 3em; padding-right: 2em">
+		Is there a problem? <br />
+		<a target="_blank" href="contactus.jsp">Contact a Practice-It administrator</a>.
+	</p>
+</div>
+<div id="copyright">
+	Practice-It! web application and problems are copyright &copy; Marty Stepp unless otherwise specified.
+	Some problems are copyright &copy; Pearson.
+	This site is not directly affiliated or associated with Pearson or with any particular textbook or online resource.
+	Any non-educational usage of the content on this site is expressly forbidden without written permission.
+	All rights reserved.
+</div>
+</div>  <!-- end mainbodyarea -->
+<div id="dumparea"></div>
+<script type="text/javascript">
+	if (!location.href.match(/localhost/)) {
+		var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://");
+		document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+	}
+</script>
+<script type="text/javascript">
+	if (!location.href.match(/localhost/) && typeof(_gat) !== "undefined") {
+		var pageTracker = _gat._getTracker("UA-2729135-6");
+		pageTracker._initData();
+		pageTracker._trackPageview();
+	}
+</script>
+</body>
+</html>
