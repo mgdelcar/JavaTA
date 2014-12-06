@@ -17,6 +17,8 @@ class GradesSpreadsheet
   STUDENTS_USERNAME_COL     = 2
   STUDENTS_CREDENTIAL_COL   = 3
 
+  PROGRESS_SPREADSHEET_ID   = 2
+
   TITLE_ROW                 = 1
 
   ASSIGNMENT_TITLE = 'Assignment'
@@ -41,6 +43,12 @@ class GradesSpreadsheet
       @credentials_sheet = @session.spreadsheet_by_key(spreadsheet_id).worksheets[STUDENTS_SPREADSHEET_ID]
     rescue Exception => msg
       raise "Cannot read students credentials spreadsheet.\nError: #{msg}"
+    end
+
+    begin
+      @progress_sheet = @session.spreadsheet_by_key(spreadsheet_id).worksheets[PROGRESS_SPREADSHEET_ID]
+    rescue Exception => msg
+      raise "Cannot read progress spreadsheet.\nError: #{msg}"
     end
 
     verify_columns
