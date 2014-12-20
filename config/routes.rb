@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'evaluator/compile'
+
   get 'practiceit/index'
 
   resources :test_cases
