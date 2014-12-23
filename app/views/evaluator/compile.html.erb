@@ -1,7 +1,13 @@
 <h1>Evaluator compile</h1>
 
-<p>compile_output: <%= @compile_output %></p>
-<p>compile_output_error: <%= @compile_output_error %></p>
+<h2>Compile output</h2>
+<%= simple_format(@compile_output) %>
 
-<p>output: <%= @output %></p>
-<p>output_error: <%= @output_error %></p>
+<h2>Compile error</h2>
+<%= simple_format(@compile_output_error) %>
+
+<h2>Program output</h2>
+<%= simple_format(@output) %>
+
+<h2>Program errors</h2>
+<%= simple_format(@output_error) %>
