@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  execution_time_in_ms: 1
+  output: MyString
+  errors_output: MyString
+  feedback: MyString
+  terminates?: false
+  return_state: 1
+  test_case_id: 
+
+two:
+  execution_time_in_ms: 1
+  output: MyString
+  errors_output: MyString
+  feedback: MyString
+  terminates?: false
+  return_state: 1
+  test_case_id: 

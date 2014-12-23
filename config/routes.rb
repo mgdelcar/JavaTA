@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :submission_test_results
+
   resources :problem_submissions
 
   get 'evaluator/compile'

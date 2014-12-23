@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Execution time in ms:</strong>
+  <%= @submission_test_result.execution_time_in_ms %>
+</p>
+
+<p>
+  <strong>Output:</strong>
+  <%= @submission_test_result.output %>
+</p>
+
+<p>
+  <strong>Errors output:</strong>
+  <%= @submission_test_result.errors_output %>
+</p>
+
+<p>
+  <strong>Feedback:</strong>
+  <%= @submission_test_result.feedback %>
+</p>
+
+<p>
+  <strong>Terminates?:</strong>
+  <%= @submission_test_result.terminates? %>
+</p>
+
+<p>
+  <strong>Return state:</strong>
+  <%= @submission_test_result.return_state %>
+</p>
+
+<p>
+  <strong>Test case:</strong>
+  <%= @submission_test_result.test_case %>
+</p>
+
+<%= link_to 'Edit', edit_submission_test_result_path(@submission_test_result) %> |
+<%= link_to 'Back', submission_test_results_path %>
