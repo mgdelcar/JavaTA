@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :problem_submissions
+
   get 'evaluator/compile'
 
   get 'practiceit/index'

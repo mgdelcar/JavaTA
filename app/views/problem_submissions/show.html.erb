@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>File relative path:</strong>
+  <%= @problem_submission.file_relative_path %>
+</p>
+
+<p>
+  <strong>Iteration:</strong>
+  <%= @problem_submission.iteration %>
+</p>
+
+<p>
+  <strong>When:</strong>
+  <%= @problem_submission.when %>
+</p>
+
+<p>
+  <strong>Problem:</strong>
+  <%= @problem_submission.problem %>
+</p>
+
+<%= link_to 'Edit', edit_problem_submission_path(@problem_submission) %> |
+<%= link_to 'Back', problem_submissions_path %>

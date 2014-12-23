@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  file_relative_path: MyString
+  iteration: 1
+  when: 2014-12-23 18:07:45
+  problem_id: 
+
+two:
+  file_relative_path: MyString
+  iteration: 1
+  when: 2014-12-23 18:07:45
+  problem_id: 

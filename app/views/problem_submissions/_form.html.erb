@@ -1,0 +1,33 @@
+<%= form_for(@problem_submission) do |f| %>
+  <% if @problem_submission.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@problem_submission.errors.count, "error") %> prohibited this problem_submission from being saved:</h2>
+
+      <ul>
+      <% @problem_submission.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :file_relative_path %><br>
+    <%= f.text_field :file_relative_path %>
+  </div>
+  <div class="field">
+    <%= f.label :iteration %><br>
+    <%= f.number_field :iteration %>
+  </div>
+  <div class="field">
+    <%= f.label :when %><br>
+    <%= f.datetime_select :when %>
+  </div>
+  <div class="field">
+    <%= f.label :problem_id %><br>
+    <%= f.text_field :problem_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
