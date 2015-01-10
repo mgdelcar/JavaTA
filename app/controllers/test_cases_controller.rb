@@ -1,12 +1,6 @@
 class TestCasesController < ApplicationController
   before_action :set_test_case, only: [:show, :edit, :update, :destroy]
 
-  # GET /test_cases
-  # GET /test_cases.json
-  def index
-    @test_cases = TestCase.all
-  end
-
   # GET /test_cases/1
   # GET /test_cases/1.json
   def show
@@ -14,7 +8,7 @@ class TestCasesController < ApplicationController
 
   # GET /test_cases/new
   def new
-    @test_case = TestCase.new
+    @test_case = TestCase.new(problem_id: params[:problem_id])
   end
 
   # GET /test_cases/1/edit
@@ -28,7 +22,7 @@ class TestCasesController < ApplicationController
 
     respond_to do |format|
       if @test_case.save
-        format.html { redirect_to @test_case, notice: 'Test case was successfully created.' }
+        format.html { redirect_to @test_case.problem, notice: 'Test case was successfully created.' }
         format.json { render :show, status: :created, location: @test_case }
       else
         format.html { render :new }

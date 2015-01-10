@@ -21,7 +21,7 @@
   </div>
   <div class="field">
     <%= f.label :detect_plagiarism %><br>
-    <%= f.text_field :detect_plagiarism %>
+    <%= f.select :detect_plagiarism, options_for_select([['Yes', 'true'],['No', 'false']], selected = @problem.detect_plagiarism) %>
   </div>
   <div class="field">
     <%= f.label :language %><br>

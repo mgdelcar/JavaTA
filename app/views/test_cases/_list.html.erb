@@ -1,4 +1,4 @@
-<h1>Listing test_cases</h1>
+<h2>Test Cases</h2>
 
 <table>
   <thead>
@@ -6,8 +6,7 @@
       <th>Input</th>
       <th>Output</th>
       <th>Points</th>
-      <th>Max time execution sec</th>
-      <th>Problem</th>
+      <th>Max Execution Time (sec)</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -19,8 +18,6 @@
         <td><%= test_case.output %></td>
         <td><%= test_case.points %></td>
         <td><%= test_case.max_time_execution_sec %></td>
-        <td><%= test_case.problem %></td>
-        <td><%= link_to 'Show', test_case %></td>
         <td><%= link_to 'Edit', edit_test_case_path(test_case) %></td>
         <td><%= link_to 'Destroy', test_case, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
@@ -30,4 +27,4 @@
 
 <br>
 
-<%= link_to 'New Test case', new_test_case_path %>
+<%= link_to 'New Test Case', new_test_case_path(problem_id: @problem) %>

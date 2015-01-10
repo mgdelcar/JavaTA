@@ -11,6 +11,8 @@
     </div>
   <% end %>
 
+  <%= f.hidden_field :problem_id %>
+  
   <div class="field">
     <%= f.label :input %><br>
     <%= f.text_field :input %>
@@ -26,10 +28,6 @@
   <div class="field">
     <%= f.label :max_time_execution_sec %><br>
     <%= f.text_field :max_time_execution_sec %>
-  </div>
-  <div class="field">
-    <%= f.label :problem_id %><br>
-    <%= f.text_field :problem_id %>
   </div>
   <div class="actions">
     <%= f.submit %>

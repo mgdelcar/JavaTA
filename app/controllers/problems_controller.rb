@@ -10,6 +10,7 @@ class ProblemsController < ApplicationController
   # GET /problems/1
   # GET /problems/1.json
   def show
+    @test_cases = TestCase.all.where(:problem_id => @problem.id)
   end
 
   # GET /problems/new
