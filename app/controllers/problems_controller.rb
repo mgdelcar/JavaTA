@@ -7,12 +7,6 @@ class ProblemsController < ApplicationController
     @problems = Problem.all
   end
 
-  # GET /problems/1
-  # GET /problems/1.json
-  def show
-    @test_cases = TestCase.all.where(:problem_id => @problem.id)
-  end
-
   # GET /problems/new
   def new
     @problem = Problem.new
@@ -20,6 +14,7 @@ class ProblemsController < ApplicationController
 
   # GET /problems/1/edit
   def edit
+    @test_cases = TestCase.all.where(:problem_id => @problem.id)
   end
 
   # POST /problems
