@@ -1,31 +1,32 @@
-<h1>Listing problem_submissions</h1>
+<p id="notice"><%= notice %></p>
+
+<h1>Problem Submissions</h1>
 
 <table>
   <thead>
     <tr>
-      <th>File relative path</th>
-      <th>Iteration</th>
-      <th>When</th>
+      <th>Due Date</th>
       <th>Problem</th>
-      <th colspan="3"></th>
+      <th>Iterations</th>
+      <th>Correctness Grade</th>
+      <th>Code Review Grade</th>
+      <th>Total Grade</th>
+      <th>Instructor Feedback</th>
+      <th colspan="2"></th>
     </tr>
   </thead>
 
   <tbody>
-    <% @problem_submissions.each do |problem_submission| %>
+    <% @problems.each do |problem| %>
       <tr>
-        <td><%= problem_submission.file_relative_path %></td>
-        <td><%= problem_submission.iteration %></td>
-        <td><%= problem_submission.when %></td>
-        <td><%= problem_submission.problem %></td>
-        <td><%= link_to 'Show', problem_submission %></td>
-        <td><%= link_to 'Edit', edit_problem_submission_path(problem_submission) %></td>
-        <td><%= link_to 'Destroy', problem_submission, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td colspan="1"></td>
+        <td><%= problem.title %></td>
+        <td colspan="5"></td>
+        <td><%= link_to 'View Code Review', controller: 'problem_submissions', action: 'code_review', problem_id: problem.id %></td>
+        <td><%= link_to 'Submit Code', new_problem_submission_path(:problem_id => problem.id) %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New Problem submission', new_problem_submission_path %>

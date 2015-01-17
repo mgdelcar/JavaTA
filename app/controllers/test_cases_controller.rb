@@ -1,3 +1,5 @@
+# TODO: Make sure that only users with the right privileges can interact with this class
+
 class TestCasesController < ApplicationController
   before_action :set_test_case, only: [:show, :edit, :update, :destroy]
 

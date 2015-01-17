@@ -1,15 +1,18 @@
 Rails.application.routes.draw do
-  resources :submission_test_results
-
-  resources :problem_submissions
-
+  
   get 'evaluator/compile'
 
   get 'practiceit/index'
 
-  resources :test_cases
+  get 'problem_submissions/code_review'
 
+  resources :problem_submissions
+  
   resources :problems
+  
+  resources :submission_test_results
+
+  resources :test_cases
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
