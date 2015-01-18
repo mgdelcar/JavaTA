@@ -15,4 +15,7 @@
 /log/*.log
 /tmp
 
+# Ignore files uploaded
+/public/system/
+
 app/models/student.rb

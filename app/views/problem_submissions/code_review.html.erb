@@ -5,7 +5,7 @@
 <table>
   <thead>
     <tr>
-      <th>File relative path</th>
+      <th>File name</th>
       <th>Iteration</th>
       <th>When</th>
       <th>Problem</th>
@@ -16,8 +16,8 @@
   <tbody>
     <% @problem_submissions.each do |problem_submission| %>
       <tr>
-        <td><%= problem_submission.file_relative_path %></td>
-        <td><%= problem_submission.iteration %></td>
+        <td><%= problem_submission.code_file_name %></td>
+        <td></td>
         <td><%= problem_submission.when %></td>
         <td><%= problem_submission.problem.title %></td>
       </tr>

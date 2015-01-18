@@ -11,18 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141223234748) do
+ActiveRecord::Schema.define(version: 20150118024734) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "problem_submissions", force: true do |t|
-    t.string   "file_relative_path"
-    t.integer  "iteration"
     t.datetime "when"
     t.integer  "problem_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "code_file_name"
+    t.string   "code_content_type"
+    t.integer  "code_file_size"
+    t.datetime "code_updated_at"
   end
 
   add_index "problem_submissions", ["problem_id"], name: "index_problem_submissions_on_problem_id", using: :btree

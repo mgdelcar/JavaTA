@@ -53,7 +53,7 @@ class ProblemSubmissionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def problem_submission_params
-      params.require(:problem_submission).permit(:file_relative_path, :problem_id)
+      params.require(:problem_submission).permit(:code, :problem_id)
     end
 
     def problem_params
