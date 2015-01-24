@@ -7,9 +7,7 @@ one:
   feedback: MyString
   terminates?: false
   return_state: 1
-  execution_result: 1
   test_case_id: 
-  problem_id: 
 
 two:
   execution_time_in_ms: 1
@@ -18,6 +16,4 @@ two:
   feedback: MyString
   terminates?: false
   return_state: 1
-  execution_result: 1
   test_case_id: 
-  problem_id: 

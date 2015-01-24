@@ -69,6 +69,6 @@ class SubmissionTestResultsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def submission_test_result_params
-      params.require(:submission_test_result).permit(:execution_time_in_ms, :output, :errors_output, :feedback, :terminates?, :return_state, :execution_result, :test_case_id, :problem_id)
+      params.require(:submission_test_result).permit(:execution_time_in_ms, :output, :errors_output, :feedback, :terminates?, :return_state, :test_case_id)
     end
 end

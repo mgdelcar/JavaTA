@@ -9,9 +9,7 @@
       <th>Feedback</th>
       <th>Terminates?</th>
       <th>Return state</th>
-      <th>Execution result</th>
       <th>Test case</th>
-      <th>Problem</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -25,9 +23,7 @@
         <td><%= submission_test_result.feedback %></td>
         <td><%= submission_test_result.terminates? %></td>
         <td><%= submission_test_result.return_state %></td>
-        <td><%= submission_test_result.execution_result %></td>
         <td><%= submission_test_result.test_case %></td>
-        <td><%= submission_test_result.problem %></td>
         <td><%= link_to 'Show', submission_test_result %></td>
         <td><%= link_to 'Edit', edit_submission_test_result_path(submission_test_result) %></td>
         <td><%= link_to 'Destroy', submission_test_result, method: :delete, data: { confirm: 'Are you sure?' } %></td>
