@@ -31,8 +31,18 @@
 </p>
 
 <p>
+  <strong>Execution result:</strong>
+  <%= @submission_test_result.execution_result %>
+</p>
+
+<p>
   <strong>Test case:</strong>
   <%= @submission_test_result.test_case %>
+</p>
+
+<p>
+  <strong>Problem submission:</strong>
+  <%= @submission_test_result.problem_submission %>
 </p>
 
 <%= link_to 'Edit', edit_submission_test_result_path(@submission_test_result) %> |

@@ -18,7 +18,7 @@ class SubmissionTestResultsControllerTest < ActionController::TestCase
 
   test "should create submission_test_result" do
     assert_difference('SubmissionTestResult.count') do
-      post :create, submission_test_result: { errors_output: @submission_test_result.errors_output, execution_time_in_ms: @submission_test_result.execution_time_in_ms, feedback: @submission_test_result.feedback, output: @submission_test_result.output, return_state: @submission_test_result.return_state, terminates?: @submission_test_result.terminates?, test_case_id: @submission_test_result.test_case_id }
+      post :create, submission_test_result: { errors_output: @submission_test_result.errors_output, execution_result: @submission_test_result.execution_result, execution_time_in_ms: @submission_test_result.execution_time_in_ms, feedback: @submission_test_result.feedback, output: @submission_test_result.output, problem_submission_id: @submission_test_result.problem_submission_id, return_state: @submission_test_result.return_state, terminates?: @submission_test_result.terminates?, test_case_id: @submission_test_result.test_case_id }
     end
 
     assert_redirected_to submission_test_result_path(assigns(:submission_test_result))
@@ -35,7 +35,7 @@ class SubmissionTestResultsControllerTest < ActionController::TestCase
   end
 
   test "should update submission_test_result" do
-    patch :update, id: @submission_test_result, submission_test_result: { errors_output: @submission_test_result.errors_output, execution_time_in_ms: @submission_test_result.execution_time_in_ms, feedback: @submission_test_result.feedback, output: @submission_test_result.output, return_state: @submission_test_result.return_state, terminates?: @submission_test_result.terminates?, test_case_id: @submission_test_result.test_case_id }
+    patch :update, id: @submission_test_result, submission_test_result: { errors_output: @submission_test_result.errors_output, execution_result: @submission_test_result.execution_result, execution_time_in_ms: @submission_test_result.execution_time_in_ms, feedback: @submission_test_result.feedback, output: @submission_test_result.output, problem_submission_id: @submission_test_result.problem_submission_id, return_state: @submission_test_result.return_state, terminates?: @submission_test_result.terminates?, test_case_id: @submission_test_result.test_case_id }
     assert_redirected_to submission_test_result_path(assigns(:submission_test_result))
   end
 

@@ -36,8 +36,16 @@
     <%= f.number_field :return_state %>
   </div>
   <div class="field">
+    <%= f.label :execution_result %><br>
+    <%= f.number_field :execution_result %>
+  </div>
+  <div class="field">
     <%= f.label :test_case_id %><br>
     <%= f.text_field :test_case_id %>
+  </div>
+  <div class="field">
+    <%= f.label :problem_submission_id %><br>
+    <%= f.text_field :problem_submission_id %>
   </div>
   <div class="actions">
     <%= f.submit %>

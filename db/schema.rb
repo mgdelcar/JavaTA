@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150118024734) do
+ActiveRecord::Schema.define(version: 20150124165138) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,11 +45,14 @@ ActiveRecord::Schema.define(version: 20150118024734) do
     t.string   "feedback"
     t.boolean  "terminates?"
     t.integer  "return_state"
+    t.integer  "execution_result"
     t.integer  "test_case_id"
+    t.integer  "problem_submission_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  add_index "submission_test_results", ["problem_submission_id"], name: "index_submission_test_results_on_problem_submission_id", using: :btree
   add_index "submission_test_results", ["test_case_id"], name: "index_submission_test_results_on_test_case_id", using: :btree
 
   create_table "test_cases", force: true do |t|
