@@ -9,6 +9,10 @@
       <th>Iteration</th>
       <th>When</th>
       <th>Problem</th>
+      <th>Compilation Result</th>
+      <th>Compiler Stdout</th>
+      <th>Compiler Stderr</th>
+      <th>Compiler Return Value</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -20,6 +24,10 @@
         <td></td>
         <td><%= problem_submission.when %></td>
         <td><%= problem_submission.problem.title %></td>
+        <td><%= problem_submission.compilation_result %></td>
+        <td><%= problem_submission.compiler_stdout %></td>
+        <td><pre><code class="verbatim"><%= problem_submission.compiler_stderr %></code></pre></td>
+        <td><%= problem_submission.compiler_return_value %></td>
       </tr>
     <% end %>
   </tbody>

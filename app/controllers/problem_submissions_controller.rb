@@ -24,7 +24,6 @@ class ProblemSubmissionsController < ApplicationController
     
     # TODO: Calculate the right iteration number for this student
     @problem_submission = ProblemSubmission.new(problem_id: params[:problem_id])
-    #@problem_submission.iteration = 
   end
 
   # POST /problem_submissions
@@ -36,6 +35,7 @@ class ProblemSubmissionsController < ApplicationController
 
     respond_to do |format|
       if @problem_submission.save
+        @problem_submission.compile
         format.html { redirect_to '/problem_submissions', notice: 'Problem submission was successfully created.' }
         format.json { render :index, status: :created, location: @problem_submission }
       else

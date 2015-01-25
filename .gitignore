@@ -19,3 +19,4 @@
 /public/system/
 
 app/models/student.rb
+app/controllers/evaluator_controller.rb
