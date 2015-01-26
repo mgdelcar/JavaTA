@@ -1,12 +1,7 @@
 # TODO: Make sure that only users with the right privileges can interact with this class
 
 class TestCasesController < ApplicationController
-  before_action :set_test_case, only: [:show, :edit, :update, :destroy]
-
-  # GET /test_cases/1
-  # GET /test_cases/1.json
-  def show
-  end
+  before_action :set_test_case, only: [:edit, :update, :destroy]
 
   # GET /test_cases/new
   def new
@@ -24,8 +19,7 @@ class TestCasesController < ApplicationController
 
     respond_to do |format|
       if @test_case.save
-        format.html { redirect_to @test_case.problem, notice: 'Test case was successfully created.' }
-        format.json { render :show, status: :created, location: @test_case }
+        format.html { redirect_to "/problems/#{@test_case.problem_id}/edit", :notice => 'Test case was successfully created.' }
       else
         format.html { render :new }
         format.json { render json: @test_case.errors, status: :unprocessable_entity }
@@ -38,8 +32,7 @@ class TestCasesController < ApplicationController
   def update
     respond_to do |format|
       if @test_case.update(test_case_params)
-        format.html { redirect_to @test_case, notice: 'Test case was successfully updated.' }
-        format.json { render :show, status: :ok, location: @test_case }
+        format.html { redirect_to "/problems/#{@test_case.problem_id}/edit", :notice => 'Test case was successfully updated.' }
       else
         format.html { render :edit }
         format.json { render json: @test_case.errors, status: :unprocessable_entity }
@@ -65,6 +58,6 @@ class TestCasesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def test_case_params
-      params.require(:test_case).permit(:input, :output, :points, :max_time_execution_sec, :problem_id)
+      params.require(:test_case).permit(:title, :input, :output, :points, :max_time_execution_sec, :problem_id)
     end
 end

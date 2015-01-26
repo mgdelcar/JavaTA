@@ -45,6 +45,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.8.0)
+    colorize (0.7.5)
     daemons (1.1.9)
     domain_name (0.5.21)
       unf (>= 0.0.5, < 1.0.0)
@@ -206,6 +207,7 @@ PLATFORMS
 
 DEPENDENCIES
   coffee-rails (~> 4.0.0)
+  colorize
   google_drive
   jbuilder (~> 2.0)
   jquery-rails

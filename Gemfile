@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-
 group :development, :test, :production do
   gem 'pg'
   gem 'thin'
@@ -50,3 +49,5 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'tzinfo-data', platforms: [:mingw, :mswin]
 
 gem 'paperclip', '~> 4.2'
+
+gem 'colorize'

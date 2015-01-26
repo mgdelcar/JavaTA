@@ -1,6 +1,9 @@
 class ProblemsController < ApplicationController
   before_action :set_problem, only: [:show, :edit, :update, :destroy]
 
+  def show
+  end
+
   # GET /problems
   # GET /problems.json
   def index
@@ -24,7 +27,7 @@ class ProblemsController < ApplicationController
 
     respond_to do |format|
       if @problem.save
-        format.html { redirect_to @problem, notice: 'Problem was successfully created.' }
+        format.html { redirect_to action: :index, notice: 'Problem was successfully created.' }
         format.json { render :show, status: :created, location: @problem }
       else
         format.html { render :new }
@@ -38,7 +41,7 @@ class ProblemsController < ApplicationController
   def update
     respond_to do |format|
       if @problem.update(problem_params)
-        format.html { redirect_to @problem, notice: 'Problem was successfully updated.' }
+        format.html { redirect_to action: :index, notice: 'Problem was successfully updated.' }
         format.json { render :show, status: :ok, location: @problem }
       else
         format.html { render :edit }

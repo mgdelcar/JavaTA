@@ -25,7 +25,7 @@
         <td><%= problem_submission.when %></td>
         <td><%= problem_submission.problem.title %></td>
         <td><%= problem_submission.compilation_result %></td>
-        <td><%= problem_submission.compiler_stdout %></td>
+        <td><pre><code class="verbatim"><%= problem_submission.compiler_stdout %></code></pre></td>
         <td><pre><code class="verbatim"><%= problem_submission.compiler_stderr %></code></pre></td>
         <td><%= problem_submission.compiler_return_value %></td>
       </tr>

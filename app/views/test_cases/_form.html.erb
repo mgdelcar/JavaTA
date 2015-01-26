@@ -14,12 +14,16 @@
   <%= f.hidden_field :problem_id %>
   
   <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
     <%= f.label :input %><br>
-    <%= f.text_field :input %>
+    <%= f.text_area :input %>
   </div>
   <div class="field">
     <%= f.label :output %><br>
-    <%= f.text_field :output %>
+    <%= f.text_area :output %>
   </div>
   <div class="field">
     <%= f.label :points %><br>
