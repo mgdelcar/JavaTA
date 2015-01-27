@@ -14,7 +14,9 @@ class ProblemSubmissionsController < ApplicationController
     #       consider the class, due date, student id, etc
     
     @problem = Problem.find(params[:problem_id])
-    @problem_submissions = ProblemSubmission.all.where(:problem_id => @problem.id)
+    @problem_submissions = ProblemSubmission.all.where(:problem_id => @problem.id).order(:when)
+    
+    @iterations = @problem_submissions.collect.with_index { |e, i| i + 1 }
   end
 
   # GET /problem_submissions/new

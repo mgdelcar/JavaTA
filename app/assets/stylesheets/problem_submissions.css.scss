@@ -1,3 +1,16 @@
 // Place all the styles related to the ProblemSubmissions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#iteration_name
+{
+  width: 120px;
+  float: left;
+  padding: 5px;
+  text-align: right;
+}
+
+#iteration_selector
+{
+  padding: 5px;
+}

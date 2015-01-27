@@ -16,8 +16,8 @@
     <% @test_cases.each do |test_case| %>
       <tr>
         <td><%= test_case.title %></td>
-        <td><%= test_case.input %></td>
-        <td><%= test_case.output %></td>
+        <td><pre><code class="verbatim"><%= test_case.input %></code></pre></td>
+        <td><pre><code class="verbatim"><%= test_case.output %></code></pre></td>
         <td><%= test_case.points %></td>
         <td><%= test_case.max_time_execution_sec %></td>
         <td><%= link_to 'Edit', edit_test_case_path(test_case) %></td>

@@ -2,6 +2,25 @@
 
 <h1>Code Review</h1>
 
+<div>
+  <div>
+    <div id="iteration_name">
+      Left Iteration:
+    </div>
+    <div id="iteration_selector">
+      <%= select_tag "left_iteration_selection", options_for_select(@iterations, [1, @iterations.count - 1].max) %>
+    </div>
+  </div>
+  <div>
+    <div id="iteration_name">
+      Right Iteration:
+    </div>
+    <div id="iteration_selector">
+      <%= select_tag "right_iteration_selection", options_for_select(@iterations, [1, @iterations.count].max) %>
+    </div>
+  </div>
+</div>
+
 <table>
   <thead>
     <tr>
