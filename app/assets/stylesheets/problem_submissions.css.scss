@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#iteration_name
+.iteration_name
 {
   width: 120px;
   float: left;
@@ -10,7 +10,31 @@
   text-align: right;
 }
 
-#iteration_selector
+.iteration_selector
 {
   padding: 5px;
 }
+
+.iteration_section
+{
+   width: 100%;
+   margin: 5px;
+   padding: 5px;
+   top: 0;
+   left: 0;
+   height: 100%;
+   overflow: hidden;  // Sets the height of this object as big as its childern
+}
+
+.left_iteration
+{
+  float: right;
+  width: 50%;
+}
+
+.right_iteration
+{
+  float: left;
+  width: 50%;
+}
+

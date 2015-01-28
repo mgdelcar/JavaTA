@@ -12,11 +12,18 @@ class ProblemSubmissionsController < ApplicationController
   def code_review
     # TODO: Verify that this problem id is to be resolved by this student
     #       consider the class, due date, student id, etc
+    # TODO: Handle properly when params are wrong. i.e. show a nice page
+    verify_code_review_params
     
     @problem = Problem.find(params[:problem_id])
     @problem_submissions = ProblemSubmission.all.where(:problem_id => @problem.id).order(:when)
     
     @iterations = @problem_submissions.collect.with_index { |e, i| i + 1 }
+    @left_iteration = (!params[:left_iteration].nil? && params[:left_iteration].to_i.between?(1, @iterations.count)) ? params[:left_iteration] : [1, @iterations.count - 1].max
+    @right_iteration = (!params[:right_iteration].nil? && params[:right_iteration].to_i.between?(1, @iterations.count)) ? params[:right_iteration] : @iterations.count
+    
+    @left_submission = @problem_submissions[@left_iteration.to_i - 1]
+    @right_submission = @problem_submissions[@right_iteration.to_i - 1]
   end
 
   # GET /problem_submissions/new
@@ -59,6 +66,10 @@ class ProblemSubmissionsController < ApplicationController
     end
 
     def problem_params
+      params.require(:problem_id)
+    end
+    
+    def verify_code_review_params
       params.require(:problem_id)
     end
 end

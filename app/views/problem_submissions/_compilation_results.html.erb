@@ -1,0 +1,17 @@
+<p><%= problem_submission.compilation_result.humanize %></p>
+
+<% unless problem_submission.compilation_successful? %>
+
+  <% unless problem_submission.compiler_stdout.blank? %>
+  <p><strong>Standard output:</strong></p>
+  <p><pre><code class="verbatim"><%= problem_submission.compiler_stdout %></code></pre></p>
+  <% end %>
+
+  <% unless problem_submission.compiler_stderr.blank? %>
+  <p><strong>Standard error:</strong></p>
+  <p><pre><code class="verbatim"><%= problem_submission.compiler_stderr %></code></pre></p>
+  <% end %>
+  
+  <p><strong>Return code: </strong><%= problem_submission.compiler_return_value %></p>
+
+<% end %>

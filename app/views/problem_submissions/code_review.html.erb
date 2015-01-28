@@ -2,54 +2,52 @@
 
 <h1>Code Review</h1>
 
-<div>
-  <div>
-    <div id="iteration_name">
+<div class="iteration_section">
+  <h2>Iterations</h2>
+  <div class="left_iteration">
+    <div class="iteration_name">
       Left Iteration:
     </div>
-    <div id="iteration_selector">
-      <%= select_tag "left_iteration_selection", options_for_select(@iterations, [1, @iterations.count - 1].max) %>
+    <div class="iteration_selector">
+      <%= select_tag "left_iteration_select", options_for_select(@iterations, @left_iteration), class: 'iteration_select' %>
     </div>
   </div>
-  <div>
-    <div id="iteration_name">
+  <div class="right_iteration">
+    <div class="iteration_name">
       Right Iteration:
     </div>
-    <div id="iteration_selector">
-      <%= select_tag "right_iteration_selection", options_for_select(@iterations, [1, @iterations.count].max) %>
+    <div class="iteration_selector">
+      <%= select_tag "right_iteration_select", options_for_select(@iterations, @right_iteration), class: 'iteration_select' %>
     </div>
   </div>
 </div>
 
-<table>
-  <thead>
-    <tr>
-      <th>File name</th>
-      <th>Iteration</th>
-      <th>When</th>
-      <th>Problem</th>
-      <th>Compilation Result</th>
-      <th>Compiler Stdout</th>
-      <th>Compiler Stderr</th>
-      <th>Compiler Return Value</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<div class="iteration_section">
+  <h2>Compilation Result</h2>
+  <div class="left_iteration">
+    <div>
+      <%= render partial: "compilation_results", locals: { problem_submission: @left_submission } %>
+    </div>
+  </div>
+  <div class="right_iteration">
+    <div>
+      <%= render partial: "compilation_results", locals: { problem_submission: @right_submission } %>
+    </div>
+  </div>
+</div>
 
-  <tbody>
-    <% @problem_submissions.each do |problem_submission| %>
-      <tr>
-        <td><%= problem_submission.code_file_name %></td>
-        <td></td>
-        <td><%= problem_submission.when %></td>
-        <td><%= problem_submission.problem.title %></td>
-        <td><%= problem_submission.compilation_result %></td>
-        <td><pre><code class="verbatim"><%= problem_submission.compiler_stdout %></code></pre></td>
-        <td><pre><code class="verbatim"><%= problem_submission.compiler_stderr %></code></pre></td>
-        <td><%= problem_submission.compiler_return_value %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="iteration_section">
+  <h2>Tests Results</h2>
+  <div class="left_iteration">
+    <div>
+      
+    </div>
+  </div>
+  <div class="right_iteration">
+    <div>
+      
+    </div>
+  </div>
+</div>
 
 <%= link_to 'Back', problem_submissions_path %>
