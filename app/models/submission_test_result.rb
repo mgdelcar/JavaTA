@@ -14,6 +14,8 @@ class SubmissionTestResult < ActiveRecord::Base
     self.execution_result = :in_progress
     self.save
 
+    start = Time.now
+    
     begin
       # TODO: Use db value instead of 10 seconds as a timeout
       status = Timeout::timeout(10) do
@@ -46,6 +48,9 @@ class SubmissionTestResult < ActiveRecord::Base
       
       logger.error "#{self.errors_output}".red
     end
+    
+    finish = Time.now
+    self.execution_time_in_ms = (finish - start) * 1000
     
     self.save
   end

@@ -18,7 +18,7 @@ class ProblemSubmissionsController < ApplicationController
     @problem = Problem.find(params[:problem_id])
     @problem_submissions = ProblemSubmission.all.where(:problem_id => @problem.id).order(:when)
     
-    @iterations = @problem_submissions.collect.with_index { |e, i| i + 1 }
+    @iterations = @problem_submissions.collect.with_index { |submission, i| OpenStruct.new(:label => "Iteration #{i + 1} (#{I18n.l submission.when, format: :long })", :value => (i + 1)) }
     @left_iteration = (!params[:left_iteration].nil? && params[:left_iteration].to_i.between?(1, @iterations.count)) ? params[:left_iteration] : [1, @iterations.count - 1].max
     @right_iteration = (!params[:right_iteration].nil? && params[:right_iteration].to_i.between?(1, @iterations.count)) ? params[:right_iteration] : @iterations.count
     

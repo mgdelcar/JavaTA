@@ -7,7 +7,6 @@
   width: 120px;
   float: left;
   padding: 5px;
-  text-align: right;
 }
 
 .iteration_selector
@@ -28,13 +27,13 @@
 
 .left_iteration
 {
-  float: right;
+  float: left;
   width: 50%;
 }
 
 .right_iteration
 {
-  float: left;
+  float: right;
   width: 50%;
 }
 

@@ -9,7 +9,7 @@
       Left Iteration:
     </div>
     <div class="iteration_selector">
-      <%= select_tag "left_iteration_select", options_for_select(@iterations, @left_iteration), class: 'iteration_select' %>
+      <%= select_tag "left_iteration_select", options_from_collection_for_select(@iterations, :value, :label, @left_iteration), class: 'iteration_select' %>
     </div>
   </div>
   <div class="right_iteration">
@@ -17,13 +17,16 @@
       Right Iteration:
     </div>
     <div class="iteration_selector">
-      <%= select_tag "right_iteration_select", options_for_select(@iterations, @right_iteration), class: 'iteration_select' %>
+      <%= select_tag "right_iteration_select", options_from_collection_for_select(@iterations, 'value', 'label', @right_iteration), class: 'iteration_select' %>
     </div>
   </div>
+  <p>
+    <%= link_to 'Submit New Iteration', new_problem_submission_path(:problem_id => @problem.id) %>
+  </p>
 </div>
 
 <div class="iteration_section">
-  <h2>Compilation Result</h2>
+  <h2>Compilation</h2>
   <div class="left_iteration">
     <div>
       <%= render partial: "compilation_results", locals: { problem_submission: @left_submission } %>
@@ -40,12 +43,12 @@
   <h2>Tests Results</h2>
   <div class="left_iteration">
     <div>
-      
+      <%= render partial: "submission_test_results/list", locals: { test_results: @left_submission.submission_test_results } %>
     </div>
   </div>
   <div class="right_iteration">
     <div>
-      
+      <%= render partial: "submission_test_results/list", locals: { test_results: @right_submission.submission_test_results } %>
     </div>
   </div>
 </div>

@@ -1,0 +1,44 @@
+<table class="test_results_table">
+  <thead>
+    <tr>
+      <th>Test</th>
+      <th>Result</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% test_results.each do |test_result| %>
+      <tr>
+        <td>
+          <p><strong>Title:</strong> <%= test_result.test_case.title %></p>
+          <p><strong>Input:</strong></p>
+          <p><pre><code class="verbatim"><%= test_result.test_case.input %></code></pre></p>
+          
+          <% if test_result.test_failed? %>
+            <p><strong>Expected Output:</strong></p>
+            <p><pre><code class="verbatim"><%= test_result.test_case.output %></code></pre></p>
+          <% end %>
+          
+          <% unless test_result.output.blank? %>
+            <p><strong>Student's Output:</strong></p>
+            <p><pre><code class="verbatim"><%= test_result.output %></code></pre></p>
+          <% end %>
+          
+          <% unless test_result.execution_time_in_ms.nil? %>
+            <p><strong>Execution time:</strong> <%= test_result.execution_time_in_ms %>ms</p>
+          <% end %>
+          
+          <% unless test_result.errors_output.blank? %>
+            <p><strong>Error Output:</strong></p>
+            <p><pre><code class="verbatim"><%= test_result.errors_output %></code></pre></p>
+          <% end %>
+          
+          <% unless test_result.feedback.blank? %>
+            <p><strong>Instructor's feedback:</strong> <%= test_result.feedback %></p>
+          <% end %>
+        </td>
+        <td><%= test_result.execution_result.humanize %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
