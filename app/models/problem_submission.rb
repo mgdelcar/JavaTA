@@ -4,6 +4,7 @@ require 'timeout'
 class ProblemSubmission < ActiveRecord::Base
   belongs_to :problem
   has_many :submission_test_results
+  has_many :source_files
   has_attached_file :code
   
   validates :code, :attachment_presence => true
@@ -20,6 +21,15 @@ class ProblemSubmission < ActiveRecord::Base
       
       test_result = SubmissionTestResult.create(:test_case => test_case, :problem_submission => self, :execution_result => :created)
       test_result.execute_test
+    end
+  end
+
+  def create_source_files
+    begin
+      source_code = File.read(code.path)
+      source_file = SourceFile.create(:source_code => source_code, :relative_path => code_file_name, :problem_submission => self)
+    rescue
+      logger.error "Could not read file #{code.path}".red
     end
   end
 

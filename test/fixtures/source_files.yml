@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  relative_path: MyString
+  code: MyText
+  problem_submission_id: 
+
+two:
+  relative_path: MyString
+  code: MyText
+  problem_submission_id: 
