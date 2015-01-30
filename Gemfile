@@ -11,6 +11,10 @@ gem 'google_drive'
 
 gem 'mechanize'
 
+gem 'win32-open3-19', :platforms => :mingw
+
+gem 'timeout'
+
 gem 'rails_12factor', group: :production
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
