@@ -17,7 +17,7 @@
       Right Iteration:
     </div>
     <div class="iteration_selector">
-      <%= select_tag "right_iteration_select", options_from_collection_for_select(@iterations, 'value', 'label', @right_iteration), class: 'iteration_select' %>
+      <%= select_tag "right_iteration_select", options_from_collection_for_select(@iterations, :value, :label, @right_iteration), class: 'iteration_select' %>
     </div>
   </div>
   <p>
@@ -27,11 +27,7 @@
 
 <div class="iteration_section">
   <h2>Difference</h2>
-  <%=
-  unless @left_submission.source_files.empty? || @right_submission.source_files.empty?
-    render partial: "diff"
-  end
-  %>
+  <%= render partial: "diff" %>
 </div>
 
 <div class="iteration_section">
