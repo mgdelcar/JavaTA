@@ -24,6 +24,9 @@ class ProblemSubmissionsController < ApplicationController
     
     @left_submission = @problem_submissions[@left_iteration.to_i - 1]
     @right_submission = @problem_submissions[@right_iteration.to_i - 1]
+    
+    @left_source_code = @left_submission.source_files.first.source_code
+    @right_source_code = @right_submission.source_files.first.source_code
   end
 
   # GET /problem_submissions/new

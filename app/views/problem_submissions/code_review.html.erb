@@ -26,10 +26,10 @@
 </div>
 
 <div class="iteration_section">
-  <h2>DIfference</h2>
+  <h2>Difference</h2>
   <%=
   unless @left_submission.source_files.empty? || @right_submission.source_files.empty?
-    Diffy::Diff.new(@left_submission.source_files.first.source_code, @right_submission.source_files.first.source_code, :include_plus_and_minus_in_html => true).to_s(:html).html_safe
+    render partial: "diff"
   end
   %>
 </div>

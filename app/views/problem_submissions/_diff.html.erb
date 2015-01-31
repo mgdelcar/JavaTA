@@ -1,0 +1,45 @@
+<%
+unless @left_source_code.empty? || @right_source_code.empty?
+  diffy_output = Diffy::Diff.new(@left_source_code, @right_source_code, :include_plus_and_minus_in_html => true).to_s(:html)
+  
+  doc = Nokogiri::HTML::DocumentFragment.parse diffy_output
+  
+  # Goal, convert the <li> into <div> in order to have better control
+  lines = doc.css('li')
+%>
+
+<div class='diff'>
+  
+  <% 
+  left_line_number = 0
+  right_line_number = 0
+
+  lines.each do |line| 
+    css_class = line.attributes['class'].value
+    show_left_line = false
+    show_right_line = false
+    
+    if (css_class.eql? 'unchanged')
+      left_line_number += 1
+      right_line_number += 1
+      show_left_line = true
+      show_right_line = true
+    elsif (css_class.eql? 'ins')
+      right_line_number += 1
+      show_right_line = true
+    elsif (css_class.eql? 'del')
+      left_line_number += 1
+      show_left_line = true
+    end
+  %>
+  <div class='diff_line'>
+    <div class='line_number left_number'><%= left_line_number if show_left_line %></div>
+    <div class='line_number right_number'><%= right_line_number if show_right_line %></div>
+    <div class='<%= css_class.html_safe %> source_code'>
+      <%= line.inner_html.html_safe %>
+    </div>
+    <div class='comment'>This is a test comment</div>
+  </div>
+  <% end %>
+</div>
+<% end %>
