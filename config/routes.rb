@@ -1,10 +1,8 @@
-GmailAlerts::Application.routes.draw do
+Rails.application.routes.draw do
+  # Google OAUTH 2.0 callback
   root to: 'sessions#new'
   resources :sessions, only: :index
   get "/auth/:provider/callback" => 'sessions#create'
-end
-
-Rails.application.routes.draw do
   
   resources :submission_test_results
 
