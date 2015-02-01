@@ -5,6 +5,12 @@ group :development, :test, :production do
   gem 'thin'
 end
 
+gem 'omniauth', '~> 1.2.2'
+
+gem 'omniauth-google-oauth2'
+
+gem 'json'
+
 gem 'nokogiri'
 
 gem 'google_drive'
