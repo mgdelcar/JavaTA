@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150130023153) do
+ActiveRecord::Schema.define(version: 20150201224322) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -81,5 +81,13 @@ ActiveRecord::Schema.define(version: 20150130023153) do
   end
 
   add_index "test_cases", ["problem_id"], name: "index_test_cases_on_problem_id", using: :btree
+
+  create_table "tokens", force: true do |t|
+    t.string   "access_token"
+    t.string   "refresh_token"
+    t.datetime "expires_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

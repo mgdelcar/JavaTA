@@ -1,5 +1,10 @@
-<%# app/views/sessions/create.html.erb %>
+<h1>Auth</h1>
 <% @auth.each do |key, value| %>
-  <h1><%= key %> </h1>
+  <h2><%= key %> </h2>
+  <p><%= value %> </p>
+<% end %>
+<h1>Info</h1>
+<% @info.each do |key, value| %>
+  <h2><%= key %> </h2>
   <p><%= value %> </p>
 <% end %>
