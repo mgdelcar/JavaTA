@@ -1,0 +1,225 @@
+/* line 4, c:/Users/mauricio/SkyDrive/Code/Teals/JavaTA/app/assets/stylesheets/practiceit.css.scss */
+.java_ta_error {
+  color: red;
+}
+/* line 6, C:/Users/mauricio/SkyDrive/Code/Teals/JavaTA/app/assets/stylesheets/problem_submissions.css.scss */
+.iteration_name {
+  width: 120px;
+  float: left;
+  padding: 5px;
+}
+
+/* line 13, C:/Users/mauricio/SkyDrive/Code/Teals/JavaTA/app/assets/stylesheets/problem_submissions.css.scss */
+.iteration_selector {
+  padding: 5px;
+}
+
+/* line 18, C:/Users/mauricio/SkyDrive/Code/Teals/JavaTA/app/assets/stylesheets/problem_submissions.css.scss */
+.iteration_section {
+  width: 100%;
+  margin: 5px;
+  padding: 5px;
+  top: 0;
+  left: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* line 29, C:/Users/mauricio/SkyDrive/Code/Teals/JavaTA/app/assets/stylesheets/problem_submissions.css.scss */
+.left_iteration {
+  float: left;
+  width: 50%;
+}
+
+/* line 35, C:/Users/mauricio/SkyDrive/Code/Teals/JavaTA/app/assets/stylesheets/problem_submissions.css.scss */
+.right_iteration {
+  float: right;
+  width: 50%;
+}
+
+/* line 42, C:/Users/mauricio/SkyDrive/Code/Teals/JavaTA/app/assets/stylesheets/problem_submissions.css.scss */
+.diff {
+  display: table;
+  width: 100%;
+}
+/* line 49, C:/Users/mauricio/SkyDrive/Code/Teals/JavaTA/app/assets/stylesheets/problem_submissions.css.scss */
+.diff .diff_line {
+  display: table-row;
+}
+/* line 53, C:/Users/mauricio/SkyDrive/Code/Teals/JavaTA/app/assets/stylesheets/problem_submissions.css.scss */
+.diff .source_code, .diff .comment, .diff .line_number {
+  display: table-cell;
+  height: 100%;
+}
+/* line 58, C:/Users/mauricio/SkyDrive/Code/Teals/JavaTA/app/assets/stylesheets/problem_submissions.css.scss */
+.diff .line_number {
+  text-align: right;
+  padding-right: 3px;
+  border-right: 1px #aaa solid;
+  font-family: Consolas, courier;
+}
+/* line 65, C:/Users/mauricio/SkyDrive/Code/Teals/JavaTA/app/assets/stylesheets/problem_submissions.css.scss */
+.diff .source_code {
+  width: 60%;
+}
+/* line 71, C:/Users/mauricio/SkyDrive/Code/Teals/JavaTA/app/assets/stylesheets/problem_submissions.css.scss */
+.diff del, .diff ins {
+  display: block;
+  text-decoration: none;
+}
+/* line 76, C:/Users/mauricio/SkyDrive/Code/Teals/JavaTA/app/assets/stylesheets/problem_submissions.css.scss */
+.diff del, .diff ins, .diff span {
+  white-space: pre-wrap;
+  font-family: Consolas, courier;
+}
+/* line 81, C:/Users/mauricio/SkyDrive/Code/Teals/JavaTA/app/assets/stylesheets/problem_submissions.css.scss */
+.diff .ins {
+  background: #dfd;
+  color: #080;
+}
+/* line 86, C:/Users/mauricio/SkyDrive/Code/Teals/JavaTA/app/assets/stylesheets/problem_submissions.css.scss */
+.diff .del {
+  background: #fee;
+  color: #b00;
+}
+/* line 91, C:/Users/mauricio/SkyDrive/Code/Teals/JavaTA/app/assets/stylesheets/problem_submissions.css.scss */
+.diff del strong {
+  font-weight: 400;
+  background: #fcc;
+}
+/* line 96, C:/Users/mauricio/SkyDrive/Code/Teals/JavaTA/app/assets/stylesheets/problem_submissions.css.scss */
+.diff ins strong {
+  font-weight: 400;
+  background: #9f9;
+}
+/* line 101, C:/Users/mauricio/SkyDrive/Code/Teals/JavaTA/app/assets/stylesheets/problem_submissions.css.scss */
+.diff .line_number {
+  background-color: #ECECEC;
+  color: #aaa;
+  width: 30px;
+}
+
+/* line 108, C:/Users/mauricio/SkyDrive/Code/Teals/JavaTA/app/assets/stylesheets/problem_submissions.css.scss */
+.diff .diff-block-info {
+  background: none repeat scroll 0 0 gray;
+}
+/* line 1, c:/Users/mauricio/SkyDrive/Code/Teals/JavaTA/app/assets/stylesheets/scaffolds.css.scss */
+body {
+  background-color: #fff;
+  color: #333;
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+/* line 9, c:/Users/mauricio/SkyDrive/Code/Teals/JavaTA/app/assets/stylesheets/scaffolds.css.scss */
+p, ol, ul, td {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+/* line 15, c:/Users/mauricio/SkyDrive/Code/Teals/JavaTA/app/assets/stylesheets/scaffolds.css.scss */
+pre {
+  background-color: #eee;
+  padding: 10px;
+  font-size: 11px;
+}
+
+/* line 21, c:/Users/mauricio/SkyDrive/Code/Teals/JavaTA/app/assets/stylesheets/scaffolds.css.scss */
+a {
+  color: #000;
+}
+/* line 23, c:/Users/mauricio/SkyDrive/Code/Teals/JavaTA/app/assets/stylesheets/scaffolds.css.scss */
+a:visited {
+  color: #666;
+}
+/* line 26, c:/Users/mauricio/SkyDrive/Code/Teals/JavaTA/app/assets/stylesheets/scaffolds.css.scss */
+a:hover {
+  color: #fff;
+  background-color: #000;
+}
+
+/* line 33, c:/Users/mauricio/SkyDrive/Code/Teals/JavaTA/app/assets/stylesheets/scaffolds.css.scss */
+div.field, div.actions {
+  margin-bottom: 10px;
+}
+
+/* line 38, c:/Users/mauricio/SkyDrive/Code/Teals/JavaTA/app/assets/stylesheets/scaffolds.css.scss */
+#notice {
+  color: green;
+}
+
+/* line 42, c:/Users/mauricio/SkyDrive/Code/Teals/JavaTA/app/assets/stylesheets/scaffolds.css.scss */
+.field_with_errors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
+/* line 48, c:/Users/mauricio/SkyDrive/Code/Teals/JavaTA/app/assets/stylesheets/scaffolds.css.scss */
+#error_explanation {
+  width: 450px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 0;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+/* line 55, c:/Users/mauricio/SkyDrive/Code/Teals/JavaTA/app/assets/stylesheets/scaffolds.css.scss */
+#error_explanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: -7px;
+  margin-bottom: 0px;
+  background-color: #c00;
+  color: #fff;
+}
+/* line 65, c:/Users/mauricio/SkyDrive/Code/Teals/JavaTA/app/assets/stylesheets/scaffolds.css.scss */
+#error_explanation ul li {
+  font-size: 12px;
+  list-style: square;
+}
+/* line 1, C:/Users/mauricio/SkyDrive/Code/Teals/JavaTA/app/assets/stylesheets/sessions.css.scss */
+#log_in_header {
+  width: 100%;
+  height: 200px;
+}
+
+/* line 6, C:/Users/mauricio/SkyDrive/Code/Teals/JavaTA/app/assets/stylesheets/sessions.css.scss */
+.log_in {
+  width: 100%;
+  text-align: center;
+}
+/* line 6, C:/Users/mauricio/SkyDrive/Code/Teals/JavaTA/app/assets/stylesheets/test_cases.css.scss */
+.test_results_table {
+  width: 100%;
+}
+/* line 10, C:/Users/mauricio/SkyDrive/Code/Teals/JavaTA/app/assets/stylesheets/test_cases.css.scss */
+.test_results_table th {
+  text-align: left;
+}
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+
+
+ */
+
+
+.verbatim
+{
+  font-family: Consolas,"courier new";
+  font-size: 13px;
+}
