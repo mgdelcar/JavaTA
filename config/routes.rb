@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :users
+
   # Google OAUTH 2.0 callback
   root to: 'sessions#new'
   resources :sessions, only: :index
