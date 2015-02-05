@@ -24,8 +24,8 @@
     <%= f.text_field :last_name %>
   </div>
   <div class="field">
-    <%= f.label :user_type %><br>
-    <%= f.number_field :user_type %>
+    <%= f.label :user_type %><br>    
+    <%= f.select :user_type, options_for_select(User.user_types.collect { |s| [s[0].humanize, s[0]] }, selected: @user.user_type), {} , class: "form-control" %>
   </div>
   <div class="actions">
     <%= f.submit %>
