@@ -1,5 +1,5 @@
 require 'rubygems'
-require 'google_drive'
+require 'google_drive_v0'
 
 class GradesSpreadsheet
 
@@ -28,7 +28,7 @@ class GradesSpreadsheet
   # Google credentials and spreadsheet id (e.g. https://docs.google.com/spreadsheet/ccc?key=pz7XtlQC-PYx-jrVMJErTcg)
   def initialize(email, credentials, spreadsheet_id)
     begin
-      @session = GoogleDrive.login(email, credentials)
+      @session = GoogleDriveV0.login(email, credentials)
     rescue Exception => msg
       raise "Could not connect to the spreadsheet with id #{spreadsheet_id} using the credentials of #{email}.\nError: #{msg}"
     end
