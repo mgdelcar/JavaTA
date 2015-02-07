@@ -46,7 +46,13 @@ class SessionsController < ApplicationController
     end
 
     logger.info "Looking for user with email #{@info['email']}".green
-    user = User.find_by_email(@info['email'])
+    
+    if (User.count == 0)
+      user = User.create(:email => @info['email'], :name => @info['first_name'], :last_name => @info['last_name'], :user_type => :admininstrator)
+    else
+      user = User.find_by_email(@info['email'])
+    end
+    
     if user.nil?
       redirect_to failure_page
       return
@@ -61,7 +67,7 @@ class SessionsController < ApplicationController
   def failure
     # TODO: Process a call like=GET path="/auth/failure?message=invalid_credentials&origin=http%3A%2F%2Fjava-ta.herokuapp.com%2F&strategy=google_oauth2" host=java-ta.herokuapp.com request_id=0367ede6-9209-4817-8527-d499a31e312e fwd="73.53.56.252" dyno=web.1 connect=1ms service=8ms status=404 bytes=1758
     flash[:error] = "Could not log in as the user provided"
-    redirect_to action: :new
+    redirect_to start_page
   end
 
   def destroy
