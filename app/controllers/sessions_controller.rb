@@ -31,7 +31,7 @@ class SessionsController < ApplicationController
       credentials = auth['credentials']
       logger.info "Tokens are #{credentials}".green
 
-      @info = credentials['extra']['raw_info']
+      @info = credentials['extra']['info']
       logger.info "User info is are #{@info}".green
 
       # TODO: Link the token to the user name
