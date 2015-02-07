@@ -18,7 +18,7 @@ class SessionsController < ApplicationController
     auth = request.env['omniauth.auth']
     provider = auth['provider']
 
-    logger.info "Trying to log in with the following credentials: #{auth}".green
+    logger.info "Trying to log in with the following information #{auth}".green
 
     if auth.nil? || provider.nil?
       redirect_to failure_page
@@ -29,7 +29,10 @@ class SessionsController < ApplicationController
       logger.info "Using google OAuth2".green
 
       credentials = auth['credentials']
+      logger.info "Tokens are #{credentials}".green
+
       @info = credentials['extra']['raw_info']
+      logger.info "User info is are #{@info}".green
 
       # TODO: Link the token to the user name
       Token.create(
