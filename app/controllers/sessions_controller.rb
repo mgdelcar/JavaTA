@@ -29,7 +29,6 @@ class SessionsController < ApplicationController
       logger.info "Using google OAuth2".green
 
       credentials = auth['credentials']
-      logger.info "Tokens are #{credentials}".green
 
       @info = auth['info']
       logger.info "User info is #{@info}".green
@@ -40,14 +39,13 @@ class SessionsController < ApplicationController
         refresh_token: credentials['refresh_token'],
         expires_at: Time.at(credentials['expires_at']).to_datetime)
     elsif provider.eql?('developer')
-      logger.info "Using google oauth".green
-
       @info = auth['info']
     else
       redirect_to failure_page
       return
     end
 
+    logger.info "Looking for user with email #{@info['email']}".green
     user = User.find_by_email(@info['email'])
     if user.nil?
       redirect_to failure_page
