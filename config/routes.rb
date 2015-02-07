@@ -4,7 +4,10 @@ Rails.application.routes.draw do
   # Google OAUTH 2.0 callback
   root to: 'sessions#new'
   resources :sessions, only: :index
-  get "/auth/:provider/callback" => 'sessions#create'
+  get '/auth/:provider/callback' => 'sessions#create'
+  post '/auth/:provider/callback' => 'sessions#create'
+  get '/auth/failure' => 'sessions#failure'
+  get 'logout' => 'sessions#destroy'
   
   resources :submission_test_results
 

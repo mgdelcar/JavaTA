@@ -1,14 +1,70 @@
 # app/controllers/sessions_controller.rb
 class SessionsController < ApplicationController
+  skip_before_action :require_login, only: [:new, :create, :failure]
+
   def new
+    @link = Rails.env.production? ? '/auth/google_oauth2' : '/auth/developer'
   end
 
   def create
-    @auth = request.env['omniauth.auth']['credentials']
-    @info = request.env['omniauth.auth']['extra']['raw_info']
-    Token.create(
-      access_token: @auth['token'],
-      refresh_token: @auth['refresh_token'],
-      expires_at: Time.at(@auth['expires_at']).to_datetime)
+    start_page = '/problem_submissions'
+    failure_page = '/auth/failure'
+    
+    unless session[:user_id].nil?
+      redirect_to start_page
+      return
+    end
+    
+    auth = request.env['omniauth.auth']
+    provider = auth['provider']
+    
+    logger.info "Trying to log in with the following credentials: #{auth}".green
+    
+    if auth.nil? || provider.nil?
+      redirect_to failure_page
+      return
+    end
+    
+    if provider.eql?('google_oauth2')
+      logger.info "Using google OAuth2".green
+      
+      @cred = auth['credentials']
+      @info = auth['extra']['raw_info']
+      
+      # TODO: Link the token to the user name
+      Token.create(
+        access_token: @cred['token'],
+        refresh_token: @cred['refresh_token'],
+        expires_at: Time.at(@cred['expires_at']).to_datetime)
+    elsif provider.eql?('developer')
+      logger.info "Using google oauth".green
+      
+      @info = auth['info']
+    else
+      redirect_to failure_page
+      return
+    end
+    
+    user = User.find_by_email(@info['email'])
+    if user.nil?
+      redirect_to failure_page
+      return
+    end
+    
+    logger.info "Logging is as user #{user}".green
+
+    session[:user_id] = user.id
+    redirect_to start_page, :notice => "Signed in!"
+  end
+
+  def failure
+    # TODO: Process a call like=GET path="/auth/failure?message=invalid_credentials&origin=http%3A%2F%2Fjava-ta.herokuapp.com%2F&strategy=google_oauth2" host=java-ta.herokuapp.com request_id=0367ede6-9209-4817-8527-d499a31e312e fwd="73.53.56.252" dyno=web.1 connect=1ms service=8ms status=404 bytes=1758
+    flash[:error] = "Could not log in as the user provided"
+    redirect_to action: :new
+  end
+  
+  def destroy
+    session[:user_id] = nil
+    redirect_to root_url, :notice => "Signed out!"
   end
 end

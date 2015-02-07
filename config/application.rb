@@ -23,7 +23,5 @@ module JavaTA
     text_plain = MIME::Types["text/plain"].first
     text_plain.extensions << "java"
     MIME::Types.index_extensions text_plain
-    
-    OmniAuth.config.logger = Rails.logger
   end
 end

@@ -1,4 +1,5 @@
 class PracticeitController < ApplicationController
+  skip_before_action :require_login, only: [:index]
 
   def index
     @log_messages = Array.new
