@@ -9,48 +9,48 @@ class SessionsController < ApplicationController
   def create
     start_page = '/problem_submissions'
     failure_page = '/auth/failure'
-    
+
     unless session[:user_id].nil?
       redirect_to start_page
       return
     end
-    
+
     auth = request.env['omniauth.auth']
     provider = auth['provider']
-    
+
     logger.info "Trying to log in with the following credentials: #{auth}".green
-    
+
     if auth.nil? || provider.nil?
       redirect_to failure_page
       return
     end
-    
+
     if provider.eql?('google_oauth2')
       logger.info "Using google OAuth2".green
-      
-      @cred = auth['credentials']
-      @info = auth['extra']['raw_info']
-      
+
+      credentials = auth['credentials']
+      @info = credentials['extra']['raw_info']
+
       # TODO: Link the token to the user name
       Token.create(
-        access_token: @cred['token'],
-        refresh_token: @cred['refresh_token'],
-        expires_at: Time.at(@cred['expires_at']).to_datetime)
+        access_token: credentials['token'],
+        refresh_token: credentials['refresh_token'],
+        expires_at: Time.at(credentials['expires_at']).to_datetime)
     elsif provider.eql?('developer')
       logger.info "Using google oauth".green
-      
+
       @info = auth['info']
     else
       redirect_to failure_page
       return
     end
-    
+
     user = User.find_by_email(@info['email'])
     if user.nil?
       redirect_to failure_page
       return
     end
-    
+
     logger.info "Logging is as user #{user}".green
 
     session[:user_id] = user.id
@@ -62,7 +62,7 @@ class SessionsController < ApplicationController
     flash[:error] = "Could not log in as the user provided"
     redirect_to action: :new
   end
-  
+
   def destroy
     session[:user_id] = nil
     redirect_to root_url, :notice => "Signed out!"
