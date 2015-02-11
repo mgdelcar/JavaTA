@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   post '/auth/:provider/callback' => 'sessions#create'
   get '/auth/failure' => 'sessions#failure'
   get 'logout' => 'sessions#destroy'
+  get 'login' => 'sessions#login'
   
   resources :submission_test_results
 

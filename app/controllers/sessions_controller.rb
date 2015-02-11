@@ -1,16 +1,24 @@
 # app/controllers/sessions_controller.rb
 class SessionsController < ApplicationController
-  skip_before_action :require_login, only: [:new, :create, :failure]
+  skip_before_action :require_login, only: [:new, :login, :create, :failure]
 
   def new
-    @link = Rails.env.production? ? '/auth/google_oauth2' : '/auth/developer'
+  end
+
+  def login
+    logger.info "Request to log in".green
+
+    if logged_in?
+      redirect_to start_page
+    else
+      redirect_to Rails.env.production? ? '/auth/google_oauth2' : '/auth/developer'
+    end
   end
 
   def create
-    start_page = '/problem_submissions'
     failure_page = '/auth/failure'
 
-    unless session[:user_id].nil?
+    if logged_in?
       redirect_to start_page
       return
     end
@@ -68,11 +76,23 @@ class SessionsController < ApplicationController
     # TODO: Process a call like=GET path="/auth/failure?message=invalid_credentials&origin=http%3A%2F%2Fjava-ta.herokuapp.com%2F&strategy=google_oauth2" host=java-ta.herokuapp.com request_id=0367ede6-9209-4817-8527-d499a31e312e fwd="73.53.56.252" dyno=web.1 connect=1ms service=8ms status=404 bytes=1758
     session[:user_id] = nil
     flash[:error] = "Could not log in as the user provided"
-    redirect_to '/problem_submissions'
+    redirect_to start_page
   end
 
   def destroy
     session[:user_id] = nil
     redirect_to root_url, :notice => "Signed out!"
   end
+
+private
+
+  # TODO: Change this for students, teachers and admins
+  def start_page
+    '/problem_submissions'
+  end
+  
+  def logged_in?
+    !session[:user_id].nil?
+  end
+  
 end
