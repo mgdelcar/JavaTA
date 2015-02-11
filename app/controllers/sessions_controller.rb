@@ -66,8 +66,9 @@ class SessionsController < ApplicationController
 
   def failure
     # TODO: Process a call like=GET path="/auth/failure?message=invalid_credentials&origin=http%3A%2F%2Fjava-ta.herokuapp.com%2F&strategy=google_oauth2" host=java-ta.herokuapp.com request_id=0367ede6-9209-4817-8527-d499a31e312e fwd="73.53.56.252" dyno=web.1 connect=1ms service=8ms status=404 bytes=1758
+    session[:user_id] = nil
     flash[:error] = "Could not log in as the user provided"
-    redirect_to start_page
+    redirect_to '/problem_submissions'
   end
 
   def destroy
