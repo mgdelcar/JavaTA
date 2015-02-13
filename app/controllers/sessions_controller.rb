@@ -29,7 +29,7 @@ class SessionsController < ApplicationController
     logger.info "Trying to log in with the following information #{auth}".green
 
     if auth.nil? || provider.nil?
-      redirect_to failure_page
+      redirect_to failure_page, :notice => 'Invalid credentials'
       return
     end
 
@@ -69,7 +69,7 @@ class SessionsController < ApplicationController
     logger.info "Logging is as user #{user}".green
 
     session[:user_id] = user.id
-    redirect_to start_page, :notice => "Signed in!"
+    redirect_to start_page
   end
 
   def failure
@@ -81,7 +81,7 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:user_id] = nil
-    redirect_to root_url, :notice => "Signed out!"
+    redirect_to root_url
   end
 
 private
@@ -89,10 +89,6 @@ private
   # TODO: Change this for students, teachers and admins
   def start_page
     '/problem_submissions'
-  end
-  
-  def logged_in?
-    !session[:user_id].nil?
   end
   
 end

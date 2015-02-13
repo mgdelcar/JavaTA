@@ -1,0 +1,5 @@
+<div class="menu_bar">
+  <div class="menu_right_button menu_button">
+    <%= if logged_in? then link_to('Log out', '/logout') else link_to('Log in', '/login') end %>
+  </div>
+</div>
