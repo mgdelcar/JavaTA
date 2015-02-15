@@ -13,6 +13,10 @@ class ApplicationController < ActionController::Base
     !session[:user_id].nil?
   end
 
+  def current_user
+    @user ||= User.find(session[:user_id])
+  end
+
   private
  
   def require_login

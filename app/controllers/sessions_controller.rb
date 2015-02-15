@@ -57,6 +57,8 @@ class SessionsController < ApplicationController
     
     if (User.count == 0)
       user = User.create(:email => @info['email'], :name => @info['first_name'], :last_name => @info['last_name'], :user_type => :admininstrator)
+      redirect_to '/users'
+      return
     else
       user = User.find_by_email(@info['email'])
     end

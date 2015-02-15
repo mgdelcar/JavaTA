@@ -1,5 +1,7 @@
 <div class="menu_bar">
-  <div class="menu_right_button menu_button">
+  <% user_menu = "layouts/#{current_user.user_type}_menu" %>
+  <%= render partial: user_menu %>
+  <div class="menu_button menu_right_button">
     <%= if logged_in? then link_to('Log out', '/logout') else link_to('Log in', '/login') end %>
   </div>
 </div>
