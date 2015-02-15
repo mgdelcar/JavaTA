@@ -8,7 +8,5 @@
 	</buildSpec>
 	<natures>
 		<nature>org.radrails.rails.core.railsnature</nature>
-		<nature>com.aptana.ruby.core.rubynature</nature>
-		<nature>com.aptana.projects.webnature</nature>
 	</natures>
 </projectDescription>
