@@ -220,6 +220,7 @@ GEM
     win32-open3-19 (0.0.2)
 
 PLATFORMS
+  ruby
   x86-mingw32
 
 DEPENDENCIES
