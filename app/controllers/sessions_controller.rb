@@ -19,6 +19,7 @@ class SessionsController < ApplicationController
     failure_page = '/auth/failure'
 
     if logged_in?
+      logger.info "User is already logged in, redirecting to start page"
       redirect_to start_page
       return
     end
@@ -88,9 +89,18 @@ class SessionsController < ApplicationController
 
 private
 
-  # TODO: Change this for students, teachers and admins
   def start_page
-    '/problem_submissions'
+    if current_user.nil?
+      return '/logout'
+    elsif current_user.student?
+      return '/problem_submissions'
+    elsif current_user.instructor?
+      return '/problems'
+    elsif current_user.admininstrator?
+      return '/users'
+    else
+      return '/logout'
+    end
   end
   
 end
