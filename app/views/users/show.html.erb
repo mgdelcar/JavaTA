@@ -17,7 +17,7 @@
 
 <p>
   <strong>User type:</strong>
-  <%= @user.user_type %>
+  <%= @user.user_type.humanize %>
 </p>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
