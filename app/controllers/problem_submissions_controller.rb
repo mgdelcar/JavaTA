@@ -5,7 +5,7 @@ class ProblemSubmissionsController < ApplicationController
   def index
     # TODO: Filter problems for the right class that are actionable
     @problems = Problem.all
-    @problem_submissions = ProblemSubmission.all #.where(:problem_id => @problem.id, )
+    @problem_submissions = ProblemSubmission.where(:user_id => current_user.id)
   end
 
   # GET /problem_submissions/code_review/1
@@ -48,6 +48,7 @@ class ProblemSubmissionsController < ApplicationController
   def create
     parameters = problem_submission_params
     parameters[:when] = DateTime.now
+    parameters[:user_id] = current_user.id
     @problem_submission = ProblemSubmission.new(parameters)
 
     respond_to do |format|

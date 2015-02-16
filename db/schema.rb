@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150204023044) do
+ActiveRecord::Schema.define(version: 20150216210245) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,9 +29,11 @@ ActiveRecord::Schema.define(version: 20150204023044) do
     t.text     "compiler_stdout"
     t.text     "compiler_stderr"
     t.integer  "compiler_return_value"
+    t.integer  "user_id"
   end
 
   add_index "problem_submissions", ["problem_id"], name: "index_problem_submissions_on_problem_id", using: :btree
+  add_index "problem_submissions", ["user_id"], name: "index_problem_submissions_on_user_id", using: :btree
 
   create_table "problems", force: true do |t|
     t.string   "title"

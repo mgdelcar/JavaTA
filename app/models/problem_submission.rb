@@ -3,6 +3,7 @@ require 'timeout'
 
 class ProblemSubmission < ActiveRecord::Base
   belongs_to :problem
+  belongs_to :user
   has_many :submission_test_results
   has_many :source_files
   has_attached_file :code
