@@ -3,9 +3,9 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception if Rails.env.production?
 
-  helper_method :current_user, :logged_in?
+  helper_method :current_user, :logged_in?, :start_page
 
-  before_action :require_login
+  before_action :require_login, :controller_allowed?
 
   protected
  
@@ -21,6 +21,23 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def start_page
+    if current_user.nil?
+      return '/logout'
+    elsif current_user.student?
+      return '/problem_submissions'
+    elsif current_user.instructor?
+      return '/problems'
+    elsif current_user.admininstrator?
+      return '/users'
+    else
+      return '/logout'
+    end
+  end
+
+  def controller_allowed?
+  end
+
   private
  
   def require_login
@@ -32,5 +49,6 @@ class ApplicationController < ActionController::Base
       redirect_to root_url, :notice => error_message # halts request cycle
     end
   end
+
 end
 

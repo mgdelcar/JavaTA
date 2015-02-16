@@ -76,4 +76,8 @@ class ProblemSubmissionsController < ApplicationController
     def verify_code_review_params
       params.require(:problem_id)
     end
+
+    def controller_allowed?
+      redirect_to start_page unless current_user.instructor? || current_user.student?
+    end
 end

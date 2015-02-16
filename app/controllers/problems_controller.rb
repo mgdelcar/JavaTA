@@ -70,4 +70,8 @@ class ProblemsController < ApplicationController
     def problem_params
       params.require(:problem).permit(:title, :description, :detect_plagiarism, :language)
     end
+
+    def controller_allowed?
+      redirect_to start_page unless current_user.instructor?
+    end
 end

@@ -60,4 +60,8 @@ class TestCasesController < ApplicationController
     def test_case_params
       params.require(:test_case).permit(:title, :input, :output, :points, :max_time_execution_sec, :problem_id)
     end
+
+    def controller_allowed?
+      redirect_to start_page unless current_user.instructor?
+    end
 end

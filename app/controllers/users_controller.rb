@@ -71,4 +71,8 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:email, :name, :last_name, :user_type)
     end
+
+    def controller_allowed?
+      redirect_to start_page unless current_user.admininstrator?
+    end
 end

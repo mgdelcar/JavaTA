@@ -1,6 +1,7 @@
 # app/controllers/sessions_controller.rb
 class SessionsController < ApplicationController
   skip_before_action :require_login, only: [:new, :login, :create, :failure]
+  skip_before_action :controller_allowed?, only: [:new, :login, :create, :failure]
 
   def new
   end
@@ -87,20 +88,4 @@ class SessionsController < ApplicationController
     redirect_to root_url
   end
 
-private
-
-  def start_page
-    if current_user.nil?
-      return '/logout'
-    elsif current_user.student?
-      return '/problem_submissions'
-    elsif current_user.instructor?
-      return '/problems'
-    elsif current_user.admininstrator?
-      return '/users'
-    else
-      return '/logout'
-    end
-  end
-  
 end
