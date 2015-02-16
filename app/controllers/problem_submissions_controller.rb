@@ -17,14 +17,19 @@ class ProblemSubmissionsController < ApplicationController
     
     @problem = Problem.find(params[:problem_id])
     @problem_submissions = ProblemSubmission.all.where(:problem_id => @problem.id).order(:when)
-    
+
+    if (@problem_submissions.count == 0)
+      redirect_to "/problem_submissions/new?problem_id=#{params[:problem_id]}"
+      return
+    end
+
     @iterations = @problem_submissions.collect.with_index { |submission, i| OpenStruct.new(:label => "Iteration #{i + 1} (#{I18n.l submission.when, format: :long })", :value => (i + 1)) }
     @left_iteration = (!params[:left_iteration].nil? && params[:left_iteration].to_i.between?(1, @iterations.count)) ? params[:left_iteration] : [1, @iterations.count - 1].max
     @right_iteration = (!params[:right_iteration].nil? && params[:right_iteration].to_i.between?(1, @iterations.count)) ? params[:right_iteration] : @iterations.count
-    
+
     @left_submission = @problem_submissions[@left_iteration.to_i - 1]
     @right_submission = @problem_submissions[@right_iteration.to_i - 1]
-    
+
     @left_source_code = @left_submission.source_files.empty? ? '' : @left_submission.source_files.first.source_code
     @right_source_code = @right_submission.source_files.empty? ? '' : @right_submission.source_files.first.source_code
   end
