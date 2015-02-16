@@ -31,7 +31,7 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 50px;
+  height: 60px;
 }
 
 .menu_bar a:link
@@ -49,7 +49,7 @@
 .menu_button
 {
   height: 40px;
-  width: 60px;
+  width: 80px;
   padding-top:15px;
   padding-right:10px;
   padding-left:10px;
@@ -62,7 +62,14 @@
 
 .menu_right_button
 {
+  width: 200px;
+  text-align: right;
   float: right;
+}
+
+.menu_email
+{
+  font-size: 8pt;
 }
 
 .main_body
@@ -73,6 +80,6 @@
   
   padding: 10px;
   
-  top: 50px;
+  top: 60px;
   left: 0;
 }
