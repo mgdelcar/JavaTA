@@ -4,7 +4,7 @@
 
 .comment {
   margin-bottom: 10px;
-  max-width: 300px;
+  max-width: 350px;
 
   padding-left: 10px;
 
@@ -25,6 +25,11 @@
 }
 
 .this_user_comment {
+  background-color: #A1C6F8;
+  margin-left: 50px;
+}
+
+.other_user_comment {
   background-color: #97B9E9;
 }
 

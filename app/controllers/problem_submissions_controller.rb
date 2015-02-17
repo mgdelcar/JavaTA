@@ -14,9 +14,22 @@ class ProblemSubmissionsController < ApplicationController
     #       consider the class, due date, student id, etc
     # TODO: Handle properly when params are wrong. i.e. show a nice page
     verify_code_review_params
-    
+
+    if current_user.student?
+      author = current_user
+    elsif current_user.instructor?
+      author = User.find(params[:user_id])
+      if author.nil?
+        redirect_to start_page, :notice => "Cannot find user"
+        return
+      end
+    else
+      redirect_to start_page
+      return
+    end
+
     @problem = Problem.find(params[:problem_id])
-    @problem_submissions = ProblemSubmission.all.where(:problem_id => @problem.id).order(:when)
+    @problem_submissions = ProblemSubmission.where(:problem => @problem, :user => author).order(:when)
 
     if (@problem_submissions.count == 0)
       redirect_to "/problem_submissions/new?problem_id=#{params[:problem_id]}"
@@ -73,7 +86,7 @@ class ProblemSubmissionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def problem_submission_params
-      params.require(:problem_submission).permit(:code, :problem_id)
+      params.require(:problem_submission).permit(:code, :problem_id, :user_id)
     end
 
     def problem_params

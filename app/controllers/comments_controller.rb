@@ -30,7 +30,9 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to "/problem_submissions/code_review?problem_id=#{@comment.source_file.problem_submission.problem.id}" }
+        problem_id = @comment.source_file.problem_submission.problem.id
+        student = "&user_id=#{@comment.source_file.problem_submission.user.id}"
+        format.html { redirect_to "/problem_submissions/code_review?problem_id=#{problem_id}#{student}" }
         format.json { render :show, status: :created, location: @comment }
       else
         format.html { render :new }
