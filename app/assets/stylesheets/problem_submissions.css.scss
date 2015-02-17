@@ -48,9 +48,13 @@
 
   .diff_line {
     display: table-row;
+    
+    .source_code:hover {
+      background: #ffc;
+    }
   }
   
-  .source_code, .comment, .line_number {
+  .source_code, .comment_line, .line_number {
     display: table-cell;
     height: 100%;
   }
@@ -109,7 +113,4 @@
 .diff .diff-block-info {
   background: none repeat scroll 0 0 gray;
 }
-
-
-
 
