@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :comments
+
   resources :users
 
   # Google OAUTH 2.0 callback

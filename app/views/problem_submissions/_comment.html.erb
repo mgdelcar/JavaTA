@@ -1,0 +1,8 @@
+<div class='comment'>
+  <%= form_for(Comment.new(:line_number => line_number, :source_file => source_file)) do |f| %>
+    <%= f.hidden_field :source_file_id %>
+    <%= f.hidden_field :line_number %>
+    <%= f.text_area :message %>
+    <%= f.submit '+' %>
+  <% end %>
+</div>

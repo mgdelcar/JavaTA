@@ -50,7 +50,12 @@
       <div class='<%= css_class.html_safe %> source_code'>
         <%= line.inner_html.html_safe %>
       </div>
-      <div class='comment'>This is a test comment</div>
+      <%= render partial: "comment", locals:
+        {
+          line_number: show_right_line ? right_line_number : left_line_number,
+          source_file: show_right_line ? @right_submission.source_files.first : @left_submission.source_files.first
+        }
+      %>
     </div>
     <% end %>
   </div>

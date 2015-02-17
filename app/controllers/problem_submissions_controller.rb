@@ -30,6 +30,7 @@ class ProblemSubmissionsController < ApplicationController
     @left_submission = @problem_submissions[@left_iteration.to_i - 1]
     @right_submission = @problem_submissions[@right_iteration.to_i - 1]
 
+    # TODO: Find a way to identify other files besides the first one
     @left_source_code = @left_submission.source_files.empty? ? '' : @left_submission.source_files.first.source_code
     @right_source_code = @right_submission.source_files.empty? ? '' : @right_submission.source_files.first.source_code
   end
