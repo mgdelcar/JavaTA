@@ -15,7 +15,7 @@ class ProblemSubmissionsController < ApplicationController
     # TODO: Handle properly when params are wrong. i.e. show a nice page
     verify_code_review_params
 
-    if current_user.student?
+    if current_user.student? || params[:user_id].nil?
       author = current_user
     elsif current_user.instructor?
       author = User.find(params[:user_id])
