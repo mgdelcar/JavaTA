@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150216235446) do
+ActiveRecord::Schema.define(version: 20150217164211) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -70,9 +70,9 @@ ActiveRecord::Schema.define(version: 20150216235446) do
 
   create_table "submission_test_results", force: true do |t|
     t.integer  "execution_time_in_ms"
-    t.string   "output"
-    t.string   "errors_output"
-    t.string   "feedback"
+    t.text     "output"
+    t.text     "errors_output"
+    t.text     "feedback"
     t.boolean  "terminates?"
     t.integer  "return_state"
     t.integer  "execution_result"
