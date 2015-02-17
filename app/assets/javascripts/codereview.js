@@ -5,4 +5,10 @@ $(document).ready(function() {
   
   $('textarea').elastic();
   $('textarea').trigger('update');
+
+  $(".comment_toggle").click(function () {
+    $(this).prev().css("display", "block");
+    $(this).css("display", "none");
+  });
 });
+

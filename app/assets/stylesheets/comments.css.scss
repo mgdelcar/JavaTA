@@ -11,6 +11,10 @@
   p {
     margin: 0px;
   }
+
+  textarea {
+    width: 300px;
+  }
 }
 
 .comment_box {
@@ -24,6 +28,17 @@
   padding-bottom: 2px;
 }
 
+.comment_textarea {
+  display: none;
+}
+
+.comment_toggle {
+  cursor: pointer;
+  color: #5B779C;
+  font-size: x-small;
+  text-decoration: underline;
+}
+
 .this_user_comment {
   background-color: #A1C6F8;
   margin-left: 50px;
@@ -35,4 +50,5 @@
 
 .who_commented {
   color: #7DA1D2;
+  font-size: small;
 }
