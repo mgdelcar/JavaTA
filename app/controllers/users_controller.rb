@@ -73,6 +73,6 @@ class UsersController < ApplicationController
     end
 
     def controller_allowed?
-      redirect_to start_page unless current_user.admininstrator?
+      redirect_to start_page unless current_user.admininstrator? || current_user.instructor?
     end
 end
