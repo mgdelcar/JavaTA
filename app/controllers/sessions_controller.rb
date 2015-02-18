@@ -58,11 +58,11 @@ class SessionsController < ApplicationController
     logger.info "Looking for user with email #{@info['email']}".green
     
     if (User.count == 0)
-      user = User.create(:email => @info['email'], :name => @info['first_name'], :last_name => @info['last_name'], :user_type => :admininstrator)
+      user = User.create(:email => @info['email'].downcase, :name => @info['first_name'], :last_name => @info['last_name'], :user_type => :admininstrator)
       redirect_to '/users'
       return
     else
-      user = User.find_by_email(@info['email'])
+      user = User.find_by_email(@info['email'].downcase!)
     end
     
     if user.nil?
