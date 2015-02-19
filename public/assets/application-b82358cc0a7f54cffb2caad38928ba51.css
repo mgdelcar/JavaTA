@@ -1,0 +1,354 @@
+/* line 5, /Users/mauricio/OneDrive/Code/MacCode/JavaTA/app/assets/stylesheets/comments.css.scss */
+.comment {
+  margin-bottom: 10px;
+  max-width: 350px;
+  padding-left: 10px;
+}
+/* line 11, /Users/mauricio/OneDrive/Code/MacCode/JavaTA/app/assets/stylesheets/comments.css.scss */
+.comment p {
+  margin: 0px;
+}
+/* line 15, /Users/mauricio/OneDrive/Code/MacCode/JavaTA/app/assets/stylesheets/comments.css.scss */
+.comment textarea {
+  width: 300px;
+}
+
+/* line 20, /Users/mauricio/OneDrive/Code/MacCode/JavaTA/app/assets/stylesheets/comments.css.scss */
+.comment_box {
+  color: #2D60A6;
+  display: inline-block;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
+/* line 31, /Users/mauricio/OneDrive/Code/MacCode/JavaTA/app/assets/stylesheets/comments.css.scss */
+.comment_textarea {
+  display: none;
+}
+
+/* line 35, /Users/mauricio/OneDrive/Code/MacCode/JavaTA/app/assets/stylesheets/comments.css.scss */
+.comment_toggle {
+  cursor: pointer;
+  color: #5B779C;
+  font-size: x-small;
+  text-decoration: underline;
+}
+
+/* line 42, /Users/mauricio/OneDrive/Code/MacCode/JavaTA/app/assets/stylesheets/comments.css.scss */
+.this_user_comment {
+  background-color: #A1C6F8;
+  margin-left: 50px;
+}
+
+/* line 47, /Users/mauricio/OneDrive/Code/MacCode/JavaTA/app/assets/stylesheets/comments.css.scss */
+.other_user_comment {
+  background-color: #97B9E9;
+}
+
+/* line 51, /Users/mauricio/OneDrive/Code/MacCode/JavaTA/app/assets/stylesheets/comments.css.scss */
+.who_commented {
+  color: #7DA1D2;
+  font-size: small;
+}
+/* line 4, /Users/mauricio/OneDrive/Code/MacCode/JavaTA/app/assets/stylesheets/practiceit.css.scss */
+.java_ta_error {
+  color: red;
+}
+/* line 6, /Users/mauricio/OneDrive/Code/MacCode/JavaTA/app/assets/stylesheets/problem_submissions.css.scss */
+.iteration_name {
+  width: 120px;
+  float: left;
+  padding: 5px;
+}
+
+/* line 13, /Users/mauricio/OneDrive/Code/MacCode/JavaTA/app/assets/stylesheets/problem_submissions.css.scss */
+.iteration_selector {
+  padding: 5px;
+}
+
+/* line 18, /Users/mauricio/OneDrive/Code/MacCode/JavaTA/app/assets/stylesheets/problem_submissions.css.scss */
+.iteration_section {
+  width: 100%;
+  margin: 5px;
+  padding: 5px;
+  top: 0;
+  left: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* line 29, /Users/mauricio/OneDrive/Code/MacCode/JavaTA/app/assets/stylesheets/problem_submissions.css.scss */
+.left_iteration {
+  float: left;
+  width: 50%;
+}
+
+/* line 35, /Users/mauricio/OneDrive/Code/MacCode/JavaTA/app/assets/stylesheets/problem_submissions.css.scss */
+.right_iteration {
+  float: right;
+  width: 50%;
+}
+
+/* line 42, /Users/mauricio/OneDrive/Code/MacCode/JavaTA/app/assets/stylesheets/problem_submissions.css.scss */
+.diff {
+  display: table;
+  width: 100%;
+}
+/* line 49, /Users/mauricio/OneDrive/Code/MacCode/JavaTA/app/assets/stylesheets/problem_submissions.css.scss */
+.diff .diff_line {
+  display: table-row;
+}
+/* line 52, /Users/mauricio/OneDrive/Code/MacCode/JavaTA/app/assets/stylesheets/problem_submissions.css.scss */
+.diff .diff_line .source_code:hover {
+  background: #ffc;
+}
+/* line 57, /Users/mauricio/OneDrive/Code/MacCode/JavaTA/app/assets/stylesheets/problem_submissions.css.scss */
+.diff .source_code, .diff .comment_line, .diff .line_number {
+  display: table-cell;
+  height: 100%;
+}
+/* line 62, /Users/mauricio/OneDrive/Code/MacCode/JavaTA/app/assets/stylesheets/problem_submissions.css.scss */
+.diff .line_number {
+  text-align: right;
+  padding-right: 3px;
+  border-right: 1px #aaa solid;
+  font-family: Consolas, courier;
+  vertical-align: top;
+}
+/* line 70, /Users/mauricio/OneDrive/Code/MacCode/JavaTA/app/assets/stylesheets/problem_submissions.css.scss */
+.diff .source_code {
+  tab-size: 4;
+  width: 60%;
+  vertical-align: top;
+}
+/* line 78, /Users/mauricio/OneDrive/Code/MacCode/JavaTA/app/assets/stylesheets/problem_submissions.css.scss */
+.diff del, .diff ins {
+  display: block;
+  text-decoration: none;
+}
+/* line 83, /Users/mauricio/OneDrive/Code/MacCode/JavaTA/app/assets/stylesheets/problem_submissions.css.scss */
+.diff del, .diff ins, .diff span {
+  white-space: pre-wrap;
+  font-family: Consolas, courier;
+}
+/* line 88, /Users/mauricio/OneDrive/Code/MacCode/JavaTA/app/assets/stylesheets/problem_submissions.css.scss */
+.diff .ins {
+  background: #dfd;
+  color: #080;
+}
+/* line 93, /Users/mauricio/OneDrive/Code/MacCode/JavaTA/app/assets/stylesheets/problem_submissions.css.scss */
+.diff .del {
+  background: #fee;
+  color: #b00;
+}
+/* line 98, /Users/mauricio/OneDrive/Code/MacCode/JavaTA/app/assets/stylesheets/problem_submissions.css.scss */
+.diff del strong {
+  font-weight: 400;
+  background: #fcc;
+}
+/* line 103, /Users/mauricio/OneDrive/Code/MacCode/JavaTA/app/assets/stylesheets/problem_submissions.css.scss */
+.diff ins strong {
+  font-weight: 400;
+  background: #9f9;
+}
+/* line 108, /Users/mauricio/OneDrive/Code/MacCode/JavaTA/app/assets/stylesheets/problem_submissions.css.scss */
+.diff .line_number {
+  background-color: #ECECEC;
+  color: #aaa;
+  width: 30px;
+}
+
+/* line 115, /Users/mauricio/OneDrive/Code/MacCode/JavaTA/app/assets/stylesheets/problem_submissions.css.scss */
+.diff .diff-block-info {
+  background: none repeat scroll 0 0 gray;
+}
+/* line 1, /Users/mauricio/OneDrive/Code/MacCode/JavaTA/app/assets/stylesheets/scaffolds.css.scss */
+body {
+  background-color: #fff;
+  color: #333;
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+/* line 9, /Users/mauricio/OneDrive/Code/MacCode/JavaTA/app/assets/stylesheets/scaffolds.css.scss */
+p, ol, ul, td {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+/* line 15, /Users/mauricio/OneDrive/Code/MacCode/JavaTA/app/assets/stylesheets/scaffolds.css.scss */
+pre {
+  background-color: #eee;
+  padding: 10px;
+  font-size: 11px;
+}
+
+/* line 21, /Users/mauricio/OneDrive/Code/MacCode/JavaTA/app/assets/stylesheets/scaffolds.css.scss */
+a {
+  color: #000;
+}
+/* line 23, /Users/mauricio/OneDrive/Code/MacCode/JavaTA/app/assets/stylesheets/scaffolds.css.scss */
+a:visited {
+  color: #666;
+}
+/* line 26, /Users/mauricio/OneDrive/Code/MacCode/JavaTA/app/assets/stylesheets/scaffolds.css.scss */
+a:hover {
+  color: #fff;
+  background-color: #000;
+}
+
+/* line 33, /Users/mauricio/OneDrive/Code/MacCode/JavaTA/app/assets/stylesheets/scaffolds.css.scss */
+div.field, div.actions {
+  margin-bottom: 10px;
+}
+
+/* line 38, /Users/mauricio/OneDrive/Code/MacCode/JavaTA/app/assets/stylesheets/scaffolds.css.scss */
+#notice {
+  color: green;
+}
+
+/* line 42, /Users/mauricio/OneDrive/Code/MacCode/JavaTA/app/assets/stylesheets/scaffolds.css.scss */
+.field_with_errors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
+/* line 48, /Users/mauricio/OneDrive/Code/MacCode/JavaTA/app/assets/stylesheets/scaffolds.css.scss */
+#error_explanation {
+  width: 450px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 0;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+/* line 55, /Users/mauricio/OneDrive/Code/MacCode/JavaTA/app/assets/stylesheets/scaffolds.css.scss */
+#error_explanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: -7px;
+  margin-bottom: 0px;
+  background-color: #c00;
+  color: #fff;
+}
+/* line 65, /Users/mauricio/OneDrive/Code/MacCode/JavaTA/app/assets/stylesheets/scaffolds.css.scss */
+#error_explanation ul li {
+  font-size: 12px;
+  list-style: square;
+}
+/* line 1, /Users/mauricio/OneDrive/Code/MacCode/JavaTA/app/assets/stylesheets/sessions.css.scss */
+#log_in_header {
+  width: 100%;
+  height: 200px;
+}
+
+/* line 6, /Users/mauricio/OneDrive/Code/MacCode/JavaTA/app/assets/stylesheets/sessions.css.scss */
+.log_in {
+  width: 100%;
+  text-align: center;
+}
+/* line 6, /Users/mauricio/OneDrive/Code/MacCode/JavaTA/app/assets/stylesheets/test_cases.css.scss */
+.test_results_table {
+  width: 100%;
+}
+/* line 10, /Users/mauricio/OneDrive/Code/MacCode/JavaTA/app/assets/stylesheets/test_cases.css.scss */
+.test_results_table th {
+  text-align: left;
+}
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+
+
+ */
+
+
+body {
+  margin: 0;
+}
+
+.verbatim
+{
+  font-family: Consolas,"courier new";
+  font-size: 13px;
+}
+
+.menu_bar
+{
+  background-color: #4A7CC2;
+  display: block;
+
+  color: white;
+  position: absolute;
+
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+}
+
+.menu_bar a:link
+{
+  color: white;
+  text-decoration: none;
+}
+
+.menu_bar a:visited
+{
+  color: white;
+  text-decoration: none;
+}
+
+.menu_button
+{
+  height: 40px;
+  width: 120px;
+  padding-top:15px;
+  padding-right:10px;
+  padding-left:10px;
+}
+
+.menu_regular_button
+{
+  float: left;
+}
+
+.menu_right_button
+{
+  width: 200px;
+  text-align: right;
+  float: right;
+}
+
+.menu_email
+{
+  font-size: 8pt;
+}
+
+.main_body
+{
+  display: block;
+  position: absolute;
+  width: 100%;
+  
+  padding: 10px;
+  
+  top: 60px;
+  left: 0;
+}
