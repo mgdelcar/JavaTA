@@ -62,7 +62,7 @@ class SessionsController < ApplicationController
       redirect_to '/users'
       return
     else
-      user = User.find_by_email(@info['email'].downcase!)
+      user = User.find_by_email(@info['email'].downcase)
     end
     
     if user.nil?
