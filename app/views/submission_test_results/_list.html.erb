@@ -1,16 +1,10 @@
 <table class="test_results_table">
-  <thead>
-    <tr>
-      <th>Test</th>
-      <th>Result</th>
-    </tr>
-  </thead>
-
   <tbody>
     <% test_results.each do |test_result| %>
       <tr>
         <td>
           <p><strong>Title:</strong> <%= test_result.test_case.title %></p>
+          <p><strong>Result:</strong> <%= test_result.execution_result.humanize %></p>
           <p><strong>Input:</strong></p>
           <p><pre><code class="verbatim"><%= test_result.test_case.input %></code></pre></p>
           
@@ -37,7 +31,6 @@
             <p><strong>Instructor's feedback:</strong> <%= test_result.feedback %></p>
           <% end %>
         </td>
-        <td><%= test_result.execution_result.humanize %></td>
       </tr>
     <% end %>
   </tbody>
