@@ -6,12 +6,13 @@
   <h2>Iterations</h2>
   <div class="left_iteration">
     <div class="iteration_name">
-      Left Iteration:
+      <%= unless @show_one_iteration then "Left" end %> Iteration:
     </div>
     <div class="iteration_selector">
       <%= select_tag "left_iteration_select", options_from_collection_for_select(@iterations, :value, :label, @left_iteration), class: 'iteration_select' %>
     </div>
   </div>
+  <% unless @show_one_iteration%>
   <div class="right_iteration">
     <div class="iteration_name">
       Right Iteration:
@@ -20,6 +21,7 @@
       <%= select_tag "right_iteration_select", options_from_collection_for_select(@iterations, :value, :label, @right_iteration), class: 'iteration_select' %>
     </div>
   </div>
+  <% end %>
   <p>
     <%= link_to 'Submit New Iteration', new_problem_submission_path(:problem_id => @problem.id) %>
   </p>
@@ -37,11 +39,13 @@
       <%= render partial: "compilation_results", locals: { problem_submission: @left_submission } %>
     </div>
   </div>
+  <% unless @show_one_iteration%>
   <div class="right_iteration">
     <div>
       <%= render partial: "compilation_results", locals: { problem_submission: @right_submission } %>
     </div>
   </div>
+  <% end %>
 </div>
 
 <div class="iteration_section">
@@ -51,11 +55,13 @@
       <%= render partial: "submission_test_results/list", locals: { test_results: @left_submission.submission_test_results } %>
     </div>
   </div>
+  <% unless @show_one_iteration%>
   <div class="right_iteration">
     <div>
       <%= render partial: "submission_test_results/list", locals: { test_results: @right_submission.submission_test_results } %>
     </div>
   </div>
+  <% end %>
 </div>
 
 <%= link_to 'Back', problem_submissions_path %>

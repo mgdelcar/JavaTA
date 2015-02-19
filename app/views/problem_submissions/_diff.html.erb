@@ -11,7 +11,7 @@
   # Goal, convert the <li> into <div> in order to have better control
   lines = doc.css('li')
 
-  unless are_there_changes %>
+  if (!@show_one_iteration && !are_there_changes) %>
   <div class='diff_message'><p>Files are identical</p></div>
   <% end %>
 
