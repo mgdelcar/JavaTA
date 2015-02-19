@@ -1,5 +1,6 @@
 <div class='comment_line'>
-  <% source_file.comments.where(:line_number => line_number).order(:created_at).each do |comment|%>
+  <% current_comments = source_file.comments.where(:line_number => line_number).order(:created_at)
+    current_comments.each do |comment|%>
     <div class='comment'>
       <div class='comment_box <%= (comment.user == current_user) ? 'this_user_' : 'other_user_'%>comment'>
         <%= simple_format(comment.message) %>
@@ -13,6 +14,6 @@
     <div class='comment comment_textarea'>
       <%= f.text_area :message %> <%= f.submit '+' %>
     </div>
-    <a class="comment comment_toggle">Add Comment</a>
+    <a class="comment comment_toggle"><%= if current_comments.empty? then 'Add Comment' else 'Reply' end%></a>
   <% end %>
 </div>
