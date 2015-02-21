@@ -8,6 +8,17 @@ class ProblemSubmissionsController < ApplicationController
     @problem_submissions = ProblemSubmission.where(:user_id => current_user.id)
   end
 
+  def class_submissions
+    unless current_user.instructor?
+      redirect_to start_page
+      return
+    end
+
+    # TODO: Filter problems for the right class that are actionable
+    @problems = Problem.all
+    @problem_submissions = ProblemSubmission.all
+  end
+
   # GET /problem_submissions/code_review/1
   def code_review
     # TODO: Verify that this problem id is to be resolved by this student

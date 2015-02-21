@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Class Submissions</h1>
+<% @problems.each do |problem| %>
+
+<h2><%= problem.title %></h2>
+  <table>
+    <thead>
+      <th>Last Submission</th>
+      <th>Student Name</th>
+      <th>Iterations</th>
+    </thead>
+    <tbody>
+  <%@problem_submissions.where(:problem => problem).group(:user).count.each do |user, count|%>
+      <tr>
+        <td><%= I18n.l @problem_submissions.where(:problem => problem, :user => user).maximum(:when), format: :short %></td>
+        <td><%= user.name %> <%= user.last_name %></td>
+        <td><%= count %></td>
+        <td><%= link_to 'Code Review', controller: 'problem_submissions', action: 'code_review', problem_id: problem.id, user_id: user.id %></td>
+      </tr>
+  <% end %>
+    </tbody>
+  </table>
+<% end %>
+<br>

@@ -20,6 +20,8 @@ Rails.application.routes.draw do
 
   get 'problem_submissions/code_review'
 
+  get 'problem_submissions/class_submissions'
+
   resources :problem_submissions
   
   resources :problems
