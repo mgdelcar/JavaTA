@@ -71,9 +71,15 @@ class ProblemSubmissionsController < ApplicationController
   def new
     # TODO: Verify that this problem id is to be resolved by this student
     #       consider the class, due date, student id, etc
-    
-    # TODO: Calculate the right iteration number for this student
-    @problem_submission = ProblemSubmission.new(problem_id: params[:problem_id])
+
+    @problem = Problem.find_by_id(params[:problem_id])
+
+    if @problem.nil?
+      redirect_to start_page, :notice => "Cannot find problem"
+      return
+    end
+
+    @problem_submission = ProblemSubmission.new(problem: @problem)
   end
 
   # POST /problem_submissions
