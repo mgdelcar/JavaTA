@@ -23,6 +23,8 @@ gem 'timeout'
 
 gem 'diffy'
 
+gem 'rubyzip'
+
 gem 'rails_12factor', group: :production
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

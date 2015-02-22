@@ -1,5 +1,7 @@
+require 'fileutils'
 require 'open3'
 require 'timeout'
+require 'zip'
 
 class ProblemSubmission < ActiveRecord::Base
   belongs_to :problem
@@ -25,18 +27,70 @@ class ProblemSubmission < ActiveRecord::Base
     end
   end
 
+  def try_set_binary_name(class_name, source_code)
+    return unless self.binary_name?
+    if source_code.include?('void main')
+      self.binary_name = class_name
+      self.save
+    end
+  end
+
+  def create_source_files_from_zip
+    root_path = File.dirname(code.path)
+
+    logger.info "Unzipping file #{code.path}".green
+    begin
+      Zip::File.open(code.path) do |zip_file|
+        # TODO: Support languages other than Java
+        zip_file.select{ |e| e.name.end_with?('.java') && !e.name.start_with?('__') }.each do |entry|
+          begin
+            logger.info "Extracting #{entry.name}".green
+
+            dest_file = File.join(root_path, entry.name)
+            dest_folder = File.dirname(dest_file)
+            FileUtils::mkdir_p dest_folder unless dest_folder.equal? root_path
+
+            logger.info "Uncompressing to #{dest_file}".green
+            entry.extract dest_file
+
+            source_code = entry.get_input_stream.read
+            source_file = SourceFile.create(:source_code => source_code, :relative_path => entry.name, :problem_submission => self)
+
+            try_set_binary_name(File.basename(entry.name, '.java'), source_code)
+          rescue
+            logger.error "Error processing file '#{entry.name}'".red
+          end
+        end
+      end
+    rescue
+      logger.error "Could not unzip file '#{code.path}'".red
+    end
+  end
+
   def create_source_files
     begin
-      source_code = File.read(code.path)
-      source_file = SourceFile.create(:source_code => source_code, :relative_path => code_file_name, :problem_submission => self)
+      if code.path.end_with? 'zip'
+        create_source_files_from_zip
+      else
+        source_code = File.read(code.path)
+        source_file = SourceFile.create(:source_code => source_code, :relative_path => code_file_name, :problem_submission => self)
+      end
     rescue
       logger.error "Could not read file #{code.path}".red
     end
   end
 
+  def source_file_paths
+    paths = ''
+    source_files.each do |file|
+      paths = "#{paths} #{file.absolute_path}"
+    end
+    paths
+  end
+
   def compile
-    logger.info "Starting to compile #{code.path}".green
-    cmd = "javac #{code.path}"
+    cmd = "javac #{source_file_paths}"
+    logger.info "Starting to cmopile: #{cmd}".blue
 
     begin
       # TODO: Use a smarter value than 10 seconds as a timeout
@@ -47,19 +101,19 @@ class ProblemSubmission < ActiveRecord::Base
           self.compiler_return_value = wait_thr.value
           self.compilation_result = (self.compiler_return_value == 0) ? :compilation_successful : :compilation_error
 
-          logger.info "Compilation finished (#{code.path})".green
+          logger.info "Compilation finished (#{cmd})".green
         end
       end
-      
+
     rescue Timeout::Error
       self.compiler_stderr = "Compilation of #{self.code_file_name} timed out after 10 seconds. Wait a couple of minutes. If the problem persist, please contact your administrator."
       self.compilation_result = :timeout
-      
+
       logger.error "#{self.compiler_stderr}".red
     end
-    
+
     self.save
-    
+
     create_submission_test_results if self.compilation_successful?
   end
 

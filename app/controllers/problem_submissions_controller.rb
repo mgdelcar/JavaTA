@@ -94,6 +94,7 @@ class ProblemSubmissionsController < ApplicationController
       if @problem_submission.save
         @problem_submission.create_source_files
         @problem_submission.compile
+
         format.html { redirect_to '/problem_submissions', notice: 'Problem submission was successfully created.' }
         format.json { render :index, status: :created, location: @problem_submission }
       else
