@@ -5,7 +5,7 @@ class SubmissionTestResult < ActiveRecord::Base
   enum execution_result: [ :created, :cancelled, :in_progress, :test_pass, :test_failed, :runtime_error, :timeout ]
   
   def execute_test
-    unless (problem_submission.binary_name?)
+    if (problem_submission.binary_name.nil?)
       logger.error "A binary name has not been defined for #{problem_submission.code.path}".red
       return
     end
@@ -42,7 +42,7 @@ class SubmissionTestResult < ActiveRecord::Base
             self.execution_result = :test_failed
           end
 
-          logger.info "Test execution finished (#{File.join(location, binary)}) with return state #{self.execution_result}".green
+          logger.info "Test execution finished (#{File.join(location, problem_submission.binary_name)}) with return state #{self.execution_result}".green
         end
       end
     rescue Timeout::Error

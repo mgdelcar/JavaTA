@@ -28,10 +28,13 @@ class ProblemSubmission < ActiveRecord::Base
   end
 
   def try_set_binary_name(class_name, source_code)
-    return unless self.binary_name?
+    logger.info "Trying to identify binary name for class #{class_name}".blue
+    return unless self.binary_name.nil?
     if source_code.include?('void main')
       self.binary_name = class_name
       self.save
+    else
+      logger.error "Source code of #{class_name} does not contain a main method".yellow
     end
   end
 
@@ -57,13 +60,13 @@ class ProblemSubmission < ActiveRecord::Base
             source_file = SourceFile.create(:source_code => source_code, :relative_path => entry.name, :problem_submission => self)
 
             try_set_binary_name(File.basename(entry.name, '.java'), source_code)
-          rescue
-            logger.error "Error processing file '#{entry.name}'".red
+          rescue Exception => exc
+            logger.error "Error processing file '#{entry.name}'. #{exc.message}".red
           end
         end
       end
-    rescue
-      logger.error "Could not unzip file '#{code.path}'".red
+    rescue Exception => exc
+      logger.error "Could not unzip file '#{code.path}'. #{exc.message}".red
     end
   end
 
@@ -75,8 +78,8 @@ class ProblemSubmission < ActiveRecord::Base
         source_code = File.read(code.path)
         source_file = SourceFile.create(:source_code => source_code, :relative_path => code_file_name, :problem_submission => self)
       end
-    rescue
-      logger.error "Could not read file #{code.path}".red
+    rescue Exception => exc
+      logger.error "Could not read file #{code.path}. #{exc.message}".red
     end
   end
 
@@ -90,7 +93,7 @@ class ProblemSubmission < ActiveRecord::Base
 
   def compile
     cmd = "javac #{source_file_paths}"
-    logger.info "Starting to cmopile: #{cmd}".blue
+    logger.info "Starting to compile: #{cmd}".blue
 
     begin
       # TODO: Use a smarter value than 10 seconds as a timeout
@@ -105,11 +108,12 @@ class ProblemSubmission < ActiveRecord::Base
         end
       end
 
-    rescue Timeout::Error
+    rescue Timeout::Error => exc
       self.compiler_stderr = "Compilation of #{self.code_file_name} timed out after 10 seconds. Wait a couple of minutes. If the problem persist, please contact your administrator."
       self.compilation_result = :timeout
 
       logger.error "#{self.compiler_stderr}".red
+      logger.error "#{exc.message}".red
     end
 
     self.save
