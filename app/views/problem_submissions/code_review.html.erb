@@ -49,18 +49,9 @@
 
 <h2>Compilation</h2>
 <div class="iteration_section">
-  <div class="left_iteration">
-    <div>
-      <%= render partial: "compilation_results", locals: { problem_submission: @left_submission } %>
-    </div>
+  <div>
+    <%= render partial: "compilation_results", locals: { problem_submission: @right_submission } %>
   </div>
-  <% unless @show_one_iteration%>
-  <div class="right_iteration">
-    <div>
-      <%= render partial: "compilation_results", locals: { problem_submission: @right_submission } %>
-    </div>
-  </div>
-  <% end %>
 </div>
 
 <h2>Tests Results</h2>
