@@ -29,9 +29,12 @@ class ProblemSubmission < ActiveRecord::Base
 
   def try_set_binary_name(class_name, source_code)
     logger.info "Trying to identify binary name for class #{class_name}".blue
+
+    package = /package (.*);/.match(source_code)
+
     return unless self.binary_name.nil?
     if source_code.include?('void main')
-      self.binary_name = class_name
+      self.binary_name = package.nil? ? class_name : "#{package[1]}/#{class_name}"
       self.save
     else
       logger.error "Source code of #{class_name} does not contain a main method".yellow

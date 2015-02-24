@@ -11,8 +11,8 @@ class SubmissionTestResult < ActiveRecord::Base
     end
     
     location = File.dirname(problem_submission.code.path)
-    logger.info "Starting to execute test #{test_case.title} for [#{File.join(location, problem_submission.binary_name)}]".green
     cmd = "java -cp #{location} #{problem_submission.binary_name}"
+    logger.info "Running: [#{cmd}]".green
 
     self.execution_result = :in_progress
     self.save
@@ -48,7 +48,7 @@ class SubmissionTestResult < ActiveRecord::Base
     rescue Timeout::Error
       self.errors_output = "Test timed out as it took longer than 10 seconds to execute"
       self.execution_result = :timeout
-      
+
       logger.error "#{self.errors_output}".red
     end
     
