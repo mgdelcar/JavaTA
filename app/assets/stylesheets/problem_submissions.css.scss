@@ -42,6 +42,22 @@ th {
   width: 50%;
 }
 
+.diff_file_path
+{
+  float: left;
+  padding: 10px;
+  margin-right: 20px;
+  margin-bottom: 10px;
+}
+
+.diff_file_path_link
+{
+  cursor: pointer;
+  color: #5B779C;
+  font-size: x-small;
+  font-weight: normal;
+  text-decoration: underline;
+}
 
 // Diffy
 .diff {

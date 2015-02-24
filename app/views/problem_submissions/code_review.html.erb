@@ -2,8 +2,8 @@
 
 <h1>Code Review</h1>
 
+<h2>Iterations</h2>
 <div class="iteration_section">
-  <h2>Iterations</h2>
   <div class="left_iteration">
     <div class="iteration_name">
       <%= unless @show_one_iteration then "Left" end %> Iteration:
@@ -27,13 +27,28 @@
   </p>
 </div>
 
+<h2>Submitted Files</h2>
 <div class="iteration_section">
-  <h2>Difference</h2>
-  <%= render partial: "diff" %>
+  <%
+    left_file_paths = @left_files.select(:relative_path).map(&:relative_path)
+    right_file_paths = @right_files.select(:relative_path).map(&:relative_path)
+    all_file_paths = left_file_paths | right_file_paths 
+    
+    display_file = true
+    all_file_paths.each_with_index do |path, i|
+  %>
+    <h3><%= path %> <a class="diff_file_path_link", id="diff_file_<%= i %>">Hide Code</a> </h3>
+    <div class="diff_file" id="diff_file_<%= i %>" style="display: <%= display_file ? 'block' : 'block' %>">
+      <%= render partial: "diff" , locals: { left_file: @left_files.find_by_relative_path(path), right_file: @right_files.find_by_relative_path(path) } %>
+    </div>
+  <% 
+      display_file = false
+    end
+  %>
 </div>
 
+<h2>Compilation</h2>
 <div class="iteration_section">
-  <h2>Compilation</h2>
   <div class="left_iteration">
     <div>
       <%= render partial: "compilation_results", locals: { problem_submission: @left_submission } %>
@@ -48,8 +63,8 @@
   <% end %>
 </div>
 
+<h2>Tests Results</h2>
 <div class="iteration_section">
-  <h2>Tests Results</h2>
   <div class="left_iteration">
     <div>
       <%= render partial: "submission_test_results/list", locals: { test_results: @left_submission.submission_test_results } %>

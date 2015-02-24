@@ -52,17 +52,19 @@ class ProblemSubmissionsController < ApplicationController
     @iterations = @problem_submissions.collect.with_index { |submission, i| OpenStruct.new(:label => "Iteration #{i + 1} (#{I18n.l submission.when, format: :long })", :value => (i + 1)) }
     @left_iteration = (!params[:left_iteration].nil? && params[:left_iteration].to_i.between?(1, @iterations.count)) ? params[:left_iteration] : [1, @iterations.count - 1].max
     @left_submission = @problem_submissions[@left_iteration.to_i - 1]
-    # TODO: Find a way to identify other files besides the first one
     @left_source_code = @left_submission.source_files.empty? ? '' : @left_submission.source_files.first.source_code
+    @left_files = @left_submission.source_files
 
     if @show_one_iteration
       @right_iteration = @left_iteration
       @right_submission = @left_submission
       @right_source_code = @left_source_code
+      @right_files = @left_files
     else
       @right_iteration = (!params[:right_iteration].nil? && params[:right_iteration].to_i.between?(1, @iterations.count)) ? params[:right_iteration] : @iterations.count
       @right_submission = @problem_submissions[@right_iteration.to_i - 1]
       @right_source_code = @right_submission.source_files.empty? ? '' : @right_submission.source_files.first.source_code
+      @right_files = @right_submission.source_files
     end
     
   end
