@@ -1,7 +1,12 @@
 <div class="menu_bar">
   <%= render partial: "layouts/#{current_user.user_type}_menu" unless current_user.nil? %>
   <div class="menu_button menu_right_button">
-    <div><%= if logged_in? then link_to('Log out', '/logout') else link_to('Log in', '/login') end %></div>
+    <div><%= 
+      if impersonating? then link_to('Stop Impersonating', '/stop_impersonate')
+      elsif logged_in? then link_to('Log out', '/logout')
+      else link_to('Log in', '/login')
+      end %>
+    </div>
     <% if logged_in? then %><div class="menu_email"><%= current_user.email %></div><% end %>
   </div>
 </div>

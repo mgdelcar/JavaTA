@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception if Rails.env.production?
 
-  helper_method :current_user, :logged_in?, :start_page
+  helper_method :current_user, :impersonating?, :logged_in?, :start_page
 
   before_action :require_login, :controller_allowed?
 
@@ -11,6 +11,10 @@ class ApplicationController < ActionController::Base
  
   def logged_in?
     !session[:user_id].nil?
+  end
+
+  def impersonating?
+    !session[:original_user_id].nil?
   end
 
   def current_user

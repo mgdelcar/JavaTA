@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   get '/auth/failure' => 'sessions#failure'
   get 'logout' => 'sessions#destroy'
   get 'login' => 'sessions#login'
+  get 'start_impersonate/:id' => 'sessions#start_to_impersonate'
+  get 'stop_impersonate' => 'sessions#stop_to_impersonate'
   
   resources :submission_test_results
 
@@ -21,6 +23,10 @@ Rails.application.routes.draw do
   get 'problem_submissions/code_review'
 
   get 'problem_submissions/class_submissions'
+
+  #get 'sessions/start_to_impersonate/:id'
+
+  #get 'sessions/stop_to_impersonate/:id'
 
   resources :problem_submissions
   
