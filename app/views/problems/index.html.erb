@@ -17,7 +17,7 @@
     <% @problems.each do |problem| %>
       <tr>
         <td><%= problem.title %></td>
-        <td><%= problem.description %></td>
+        <td><%= simple_format(problem.description)%></td>
         <td><%= problem.detect_plagiarism? %></td>
         <td><%= problem.language %></td>
         <td><%= link_to 'Edit', edit_problem_path(problem) %></td>
