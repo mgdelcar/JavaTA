@@ -1,5 +1,5 @@
 <div class='comment_line'>
-  <% current_comments = source_file.comments.where(:line_number => line_number).order(:created_at)
+  <% current_comments = source_file.comments.select{ |c| c.line_number == line_number }
     current_comments.each do |comment|%>
     <div class='comment'>
       <div class='comment_box <%= (comment.user == current_user) ? 'this_user_' : 'other_user_'%>comment'>
