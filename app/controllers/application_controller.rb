@@ -31,7 +31,7 @@ class ApplicationController < ActionController::Base
     elsif current_user.student?
       return '/problem_submissions'
     elsif current_user.instructor?
-      return '/problems'
+      return '/problem_submissions/class_submissions'
     elsif current_user.admininstrator?
       return '/users'
     else
