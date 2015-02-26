@@ -74,9 +74,18 @@ class ProblemSubmissionsController < ApplicationController
     # TODO: Verify that this problem id is to be resolved by this student
     #       consider the class, due date, student id, etc
 
+    if params[:problem_id].nil?
+      logger.error "Problem id not available".red
+      redirect_to start_page, :notice => "Cannot find problem"
+      return
+    end
+
+    logger.info "Submitting problem id #{params[:problem_id]}".green
+
     @problem = Problem.find_by_id(params[:problem_id])
 
     if @problem.nil?
+      logger.error "Problem not available".red
       redirect_to start_page, :notice => "Cannot find problem"
       return
     end
