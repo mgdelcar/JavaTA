@@ -11,7 +11,7 @@ class ProblemSubmission < ActiveRecord::Base
   has_attached_file :code
   
   validates :code, :attachment_presence => true
-  validates_attachment_content_type :code, :content_type => [/text.*\Z/, "application/octet-stream", "application/zip"]
+  validates_attachment_content_type :code, :content_type => [/text.*\Z/, "application/octet-stream", "application/zip", "application/x-zip-compressed"]
   validates_attachment_file_name :code, :matches => [/java\Z/, /zip\Z/]
 
   enum compilation_result: [ :compilation_error, :compilation_successful, :incorrec_format, :disallowed_instructions, :virus_found, :plagiarism_detected, :timeout ]
