@@ -10,8 +10,8 @@ class SubmissionTestResult < ActiveRecord::Base
       return
     end
     
-    location = File.dirname(problem_submission.code.path)
-    cmd = "java -cp #{location} #{problem_submission.binary_name}"
+    location = problem_submission.absolute_path
+    cmd = "java -classpath #{location} #{problem_submission.binary_to_run}"
     logger.info "Running: [#{cmd}]".green
 
     self.execution_result = :in_progress
@@ -42,7 +42,7 @@ class SubmissionTestResult < ActiveRecord::Base
             self.execution_result = :test_failed
           end
 
-          logger.info "Test execution finished (#{File.join(location, problem_submission.binary_name)}) with return state #{self.execution_result}".green
+          logger.info "Test execution finished (#{File.join(location, problem_submission.binary_to_run)}) with return state #{self.execution_result}".green
         end
       end
     rescue Timeout::Error

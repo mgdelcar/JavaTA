@@ -16,6 +16,15 @@ class ProblemSubmission < ActiveRecord::Base
 
   enum compilation_result: [ :compilation_error, :compilation_successful, :incorrec_format, :disallowed_instructions, :virus_found, :plagiarism_detected, :timeout ]
 
+  def absolute_path
+    location = File.dirname(code.path)
+    File.join(location, relative_location)
+  end
+
+  def binary_to_run
+    package_name.empty? ? binary_name : "#{package_name}/#{binary_name}"
+  end
+
   def create_submission_test_results
     logger.info "Create submission test results".green
 
@@ -27,14 +36,15 @@ class ProblemSubmission < ActiveRecord::Base
     end
   end
 
-  def try_set_binary_name(class_name, source_code)
+  def try_set_binary_name(class_name, source_file)
     logger.info "Trying to identify binary name for class #{class_name}".blue
 
-    package = /package (.*);/.match(source_code)
-
-    return unless self.binary_name.nil?
-    if source_code.include?('void main')
-      self.binary_name = package.nil? ? class_name : "#{package[1]}/#{class_name}"
+    return unless self.binary_name.empty?
+    if source_file.source_code.include?('void main')
+      logger.info "Found main method at #{class_name}".blue
+      self.binary_name = class_name
+      self.package_name = source_file.package_name
+      self.relative_location = source_file.relative_dir
       self.save
     else
       logger.error "Source code of #{class_name} does not contain a main method".yellow
@@ -62,7 +72,7 @@ class ProblemSubmission < ActiveRecord::Base
             source_code = entry.get_input_stream.read
             source_file = SourceFile.create(:source_code => source_code, :relative_path => entry.name, :problem_submission => self)
 
-            try_set_binary_name(File.basename(entry.name, '.java'), source_code)
+            try_set_binary_name(File.basename(entry.name, '.java'), source_file)
           rescue Exception => exc
             logger.error "Error processing file '#{entry.name}'. #{exc.message}".red
           end
