@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150225014403) do
+ActiveRecord::Schema.define(version: 20150226022307) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,7 +44,9 @@ ActiveRecord::Schema.define(version: 20150225014403) do
     t.text     "compiler_stderr"
     t.integer  "compiler_return_value"
     t.integer  "user_id"
-    t.string   "binary_name"
+    t.string   "binary_name",           default: "", null: false
+    t.string   "package_name",          default: "", null: false
+    t.string   "relative_location",     default: "", null: false
   end
 
   add_index "problem_submissions", ["problem_id"], name: "index_problem_submissions_on_problem_id", using: :btree
