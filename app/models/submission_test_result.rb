@@ -11,7 +11,7 @@ class SubmissionTestResult < ActiveRecord::Base
     end
     
     location = problem_submission.absolute_path
-    cmd = "java -classpath #{location} #{problem_submission.binary_to_run}"
+    cmd = %Q[java -classpath "#{location}" "#{problem_submission.binary_to_run}"]
     logger.info "Running: [#{cmd}]".green
 
     self.execution_result = :in_progress

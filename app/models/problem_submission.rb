@@ -99,7 +99,7 @@ class ProblemSubmission < ActiveRecord::Base
   def source_file_paths
     paths = ''
     source_files.each do |file|
-      paths = "#{paths} #{file.absolute_path}"
+      paths = %Q[#{paths} "#{file.absolute_path}"]
     end
     paths
   end
