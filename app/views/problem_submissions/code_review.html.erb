@@ -25,6 +25,9 @@
   <p>
     <%= link_to 'Submit New Iteration', new_problem_submission_path(:problem_id => @problem.id) %>
   </p>
+  <% unless current_user.student? then%>
+  <p><%= link_to 'Download Submission', @right_submission.code.url(:original, false) %></p>
+  <% end %>
 </div>
 
 <h2>Submitted Files</h2>
